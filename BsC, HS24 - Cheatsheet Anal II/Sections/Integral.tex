@@ -1,0 +1,550 @@
+
+\mysection[BurntOrange]{\centering Integral}
+
+
+
+\DEF{4.1.1 (1)}{ $[a, b] \subseteq \mathbb{R}, f:[a, b] \rightarrow \mathbb{R}^n$ stetig.
+Dann $$\int_a^b f(t) d t:=\left(\int_a^b f_1(t) d t, \ldots, \int_a^b f_n(t) d t\right) \in \mathbb{R}^n$$
+
+
+}
+
+\mysubsection{\centering Wegintegrale}
+\NOTE{MC}{
+\begin{itemize}
+\item Falls $\delta$ eine orientierte Umparametrisierung von $\gamma$ ist mit $\varphi$. So ist auch $\gamma$ eine oU für $\delta$ mit $\varphi^{-1}$
+\item Falls $f$ und $g$ ein Potential besitzen, dann besitzt die Summe $f+g$ ebenfalls ein Potential.
+\end{itemize}
+}
+
+\KRZ{Wegintegral}{
+\begin{enumerate}[leftmargin = *]
+\item Parametrisiere $\gamma$ mit \COL{Parametrisierung}
+\item Testen ob Berechnung mit \COL{S 4.6.3 (Satz von Green)} einfacher ist.
+\item Berechne $\vec{\gamma}^{\prime}(t)=\frac{d}{d t} \vec{\gamma}(t)$ (jede Komponente nach dem Parameter $t$ ableiten).
+\item Benutze die Formel:
+$$
+\int_\gamma \vec{v} \cdot d \vec{s}=\int_a^b \vec{v}(\vec{\gamma}(t)) \cdot \vec{\gamma}^{\prime}(t) d t .
+$$
+
+\end{enumerate}
+}
+
+\KRZ{Parametrisierungen}{
+\begin{itemize}[leftmargin = *]
+\item Funktion:  $y=f(x)$ oder $x = g(y)$
+\begin{itemize}
+\item $x=t, y=f(t)$
+\item $x=g(t), y=t$
+\end{itemize}
+\item Liniensegment: Von $p_0$ nach $p_1$ mit $p_i = \left(x_i, y_i, z_i\right)$ 
+\begin{itemize}
+\item $\vec{r}=(1-t) p_0 +t p_1$
+\end{itemize}
+\item Kreis: Def $x^{2c} + y^{2c}= r^{2c}$
+\begin{itemize}
+\item UZS: $x=r \cdot \cos^{\frac{1}{c}} t, y=-r \cdot \sin^{\frac{1}{c}} t$ 
+\item GUZS: $x=r \cdot \cos^{\frac{1}{c}} t, y=r \cdot \sin^{\frac{1}{c}} t$
+\end{itemize}
+\item Elipse: Def $\frac{x^{2c}}{a^{2c}}+\frac{y^{2c}}{b^{2c}}=1$
+\begin{itemize}
+\item UZS: $x=a \cdot \cos^{\frac{1}{c}} t, y=-b \cdot \sin^{\frac{1}{c}} t$
+\item GUZS: $x=a \cdot \cos^{\frac{1}{c}} t, y=b \cdot \sin^{\frac{1}{c}} t$
+\end{itemize}
+
+\end{itemize}
+
+UZS = Uhrzeigersinn, \\
+GUZS = Gegenuhrzeigersinn\\
+$c$: $a^{\frac{1}{c}}=\sqrt[c]{a}$ 
+}
+
+\KRZ{Potential}{
+Gegeben sei ein konservatives Vektorfeld $f:\mathbb{R}^3 \rightarrow \mathbb{R}^3$ mit $f=(f_1, f_2,f_3)^\T$
+Gesucht: $g: \mathbb{R}^3 \rightarrow \mathbb{R}$ mit $\nabla g=f$.
+
+\begin{enumerate}
+\item Definiere $g(x,y,z) = \int f_1 dx + a(y,z)$
+\item Löse nach $a(y,z)$ in $\frac{\partial g}{\partial_y}=f_2$ und integriere $ a(y,z) = \int a(y,z) dy + b(z)$
+\item Löse nach $b(z)$ in $\frac{\partial g}{\partial_z}=f_3$ und integriere $ b(z) = \int b(z)$
+\end{enumerate}
+Falls nach \hl{dem} Potenzial gesucht wird ist die Lösung $g+C$ wenn nach \hl{einem} Potenzial gesucht wird: $g$ mit $C=0$
+}
+
+\KRZ{Konservativität}{
+\begin{itemize}[leftmargin =*]
+\item Kontraposition \COL{Prop 4.1.13}: $\mathcal{J}_f$ nicht symmetrisch $\Rightarrow$ $f$ nicht konservativ
+\item Falls $\mathcal{J}_f$ symmetrisch und Gebiet Sternförmig, ist Feld konservativ. (\COL{S 4.1.17})
+\item Konstante Felder sind immer konservativ
+
+\end{itemize}
+}
+
+\NOTE{Länge eines Weges}{
+Für einen Weg $\gamma$ ist die Länge des Weges
+$s = \int_a^b \sqrt{1+\left(\gamma^{\prime}(t)\right)^2} d t$
+
+}
+
+\DEF{4.1.1 (2)}{Ein \COL{Weg} ist ein stetiges $\gamma:[a, b] \rightarrow \mathbb{R}^n$. Wir betrachten nur \COL{stückweise} $C^1$ Wege, d.h. es gilt $k \geq 1$ and $a=t_0<t_1<\cdots<t_k=b$ Sodass $\left.\gamma\right|_{ \left( t_{i-1},t_{i}\right) } C^1$ für alle $1 \leq i \leq h$. Somit gibt es $k-1$ "Knickpunkte". Wir sagen $\gamma$ ist ein Weg von $\gamma(a)$ mach $\gamma(b)$.}
+
+\DEF{4.1.1 (3)}{Ist $\gamma:[a, b] \rightarrow \mathbb{R}^n$ in weg, $U \subseteq \mathbb{R}^n$ sodass $\operatorname{Bild}(\gamma) \subseteq u$ und $f: U \rightarrow \mathbb{R}^n$ stetig. Dann ist das Wegintegral von $f$ entlang $\gamma$, geschrieben $\int_\gamma f(s) \cdot d \vec{s}$, definiert als
+ 
+ $$
+ \int_a^b f(\gamma(t)) \cdot \gamma^{\prime}(t) d t
+ $$
+ 
+ Eine alternative Scheibweise ist das Skalarprodukt
+ $$
+ \left\langle f(\gamma(t)), \gamma^{\prime}(t)\right\rangle
+ $$}
+ 
+ \DEF{4.1.4}{Eine \COL{orientierte Umparametrisierung} eines Wegs $\gamma:[a, b] \rightarrow \mathbb{R}^n$ ist ein Weg $\sigma:[c, d] \rightarrow \mathbb{R}^u$ mit $\sigma=\gamma \circ \varphi$, wobei $\varphi:[c, d] \rightarrow[a, b]$ stetig ist, differenzierbar auf $(c, d)$, streng monoton wachsend mit $\varphi(c)=a$ and $\varphi(d)=b$ (insbesondere bijektiv).}
+
+\PROP{4.1.5}{$\gamma$ ein Weg in $\mathbb{R}^n$ mit einer orientierten Umparametrisierung $\sigma$ von $\gamma$ 
+Sei weiter das Bild $\gamma \subseteq u \subseteq \mathbb{R}^n$ und $f: U \rightarrow \mathbb{R}^n$ stetig. Dann: $$
+\int_\gamma f(s) \cdot d \vec{s}=\int_\sigma f(s) \cdot d \vec{s}
+$$}
+
+\DEF{4.1.8}{ $u \subseteq \mathbb{R}^m, \quad f: u \rightarrow \mathbb{R}^n$ stetig. Falls für alle $x_1, x_2 \in U$ das Integral
+ $$
+ \int_\gamma f(s) \cdot d \vec{s}
+ $$
+ unabhängig von der Wahl des Weges $\gamma$ von $x_1$ mach $x_2$ mit Bild $(\gamma) \subseteq U$ ist, dann ist $f$ \COL{konservativ.}}
+ 
+ \DEF{}{$U$ heisst \COL{wegzusammenhängend} falls für alle $x, y \in U$ in Weg $\gamma$ von $x$ mach $y$ existiert mit $\operatorname{Bild}(\gamma)\subseteq U$.}
+ 
+ \SA{4.1.10}{$u \subseteq \mathbb{R}^n$ offen, $f: u \rightarrow \mathbb{R}^n$ konservativ. Dann gibt es $\sin g \in C^1(u, \mathbb{R})$ mit $f=\nabla g$. Ein solches $g$ heisst \COL{Potential} von $f$ Falls $U$ wegzusammenhängend ist, dann is $g$ eindeutig bis auf Addition einer Konstanten.}
+ 
+ 
+ \PROP{4.1.13}{$U \subseteq \mathbb{R}^n$ offen, $f: u \rightarrow \mathbb{R}^n C^1$.
+$f$ konservativ $\Rightarrow \frac{\partial f_i}{\partial x_j}=\frac{\partial f_j}{\partial x_i}$ für $\quad i, j=1, \ldots, n$. $\Leftrightarrow J_f(x)$ symmetrisch für alle $x \in U$}
+
+
+ \PROP{4.1.17}{$U \subseteq \mathbb{R}^n$ offen, \COL{sternförmig} $f: u \rightarrow \mathbb{R}^n C^1$.
+$ \frac{\partial f_i}{\partial x_j}=\frac{\partial f_j}{\partial x_i}$ für $\quad i, j=1, \ldots, n\Rightarrow f$ konservativ }
+
+\SA{}{$U \subseteq \mathbb{R}^n$ offen und \hl{sternförmig}, $f: U \rightarrow \mathbb{R}^n C^1$ mit $\frac{\partial f_i}{\partial x_j}=\frac{\partial f_j}{\partial x_i}$ für alle $i, j=1, \ldots, n \Rightarrow f$ konservativ}
+
+\SA{}{$u \subseteq \mathbb{R}^\mu, f: u \rightarrow \mathbb{R}^n$ Konservativ $\Longleftrightarrow \oint_\sigma f(s) \cdot d \vec{s}=0$ für alle geschlossenen Wege $\gamma:[a, b] \rightarrow U$.}
+
+\DEF{}{$U \subseteq \mathbb{R}^n$ heisst \COL{sternförmig} falls es ein $x_0 \in U$ gibt sodass für alle $x \in C$ die Strecke zwischen $x_0$ und $x$ in A enthalten ist.}
+
+\NOTE{}{Es gilt Konvex $\Rightarrow$ Sternförmig $\Rightarrow$ wegzusammenhängend , da man zuerst immer zu $x_{0}$ gehen kann und dann zu einem beliebigen Punkt in $U$. }
+
+\DEF{4.1.20}{$U \subseteq \mathbb{R}^3$ offen, $f: U \rightarrow \mathbb{R}^3 C^1$. Dann ist die Rotation das $C^0$ vektorfeld $u \rightarrow \mathbb{R}^3$ gegeben als
+ $$
+ \operatorname{rot}(f)=\left(\begin{array}{l}
+ \partial_y f_3-\partial_z f_2 \\
+ \partial_z f_1-\partial_x f_3 \\
+ \partial_x f_2-\partial_y f_1
+ \end{array}\right)
+ $$
+ Es gilt $J_f(x)$ symmetrisch $\Leftrightarrow \operatorname{rot}(f)(x)=0$}
+
+\NOTE{}{Falls Domäne sternförmig ist gilt: Feld ist konservativ$ \Leftrightarrow J_f(x)$ symmetrisch $\Leftrightarrow \operatorname{rot}(f)(x)=0$
+Zusammenfassend gilt:
+\begin{gather*}  
+
+f \in C^{0}(U,\mathbb{R}^{n})\text{ konservativ mit }U \subseteq \mathbb{R}^{n}\\  
+\Updownarrow\\  
+f=\nabla g\text{ für }g\in C^{1}(U,\mathbb{R})\\  
+\qquad\qquad\qquad\qquad \Downarrow \quad(\Uparrow \quad falls U \text{ sternförmig})\\  
+J_{f}(x) \text{ symmetrisch}
+\end{gather*}
+
+ }
+
+
+
+\mysubsection{\centering Riemann Integral}
+
+\KRZ{Normalbereiche}{
+Für Mengen $\Omega$ wobei
+
+$$
+\Omega=\left\{(x, y) \in \mathbb{R}^2 \mid a \leq x \leq b, f(x) \leq y \leq g(x)\right\}
+$$
+und mit stetigen Funktionen $f, g$ und sei $F \in C^0(\bar{\Omega})$. Dann gilt
+
+$$
+\int_{\Omega} F d \mu=\int_a^b \int_{f(x)}^{g(x)} F(x, y) d y d x .
+$$
+
+Das gleiche gilt analog für Bereiche auf $f(y) \leq x \leq g(y)$ mit
+$$
+\int_{\Omega} F d \mu=\int_c^d \int_{h(y)}^{k(y)} F(x, y) d x d y .
+$$
+Ist $F$ stetig kann man die Reihenfolge der Integrale auch beliebig vertauschen.\\
+Beispiele sind
+\begin{itemize}[leftmargin = *]
+\item Kreis: $\int_{0}^{\sqrt{r}}\int_{-\sqrt{r-x^2}}^{\sqrt{r-x^2}}f(x,y)dydx$
+\end{itemize}
+}
+
+\DEF{}{
+Für $U \subseteq \mathbb{R}^n$ kompakt, $f: U \rightarrow \mathbb{R}$ stetig kann man das (Riemannintegral von $f$ auf $u \int_u f\left(x_1, \ldots, x_n\right) d x$ definieren, mit folgenden Eigenschaften:
+
+\begin{enumerate}[leftmargin = *]
+\item \COL{Kompabilität} $n=1, U=[a, b] \Rightarrow \int_{[a, b]} f(x) d x=\int_a^b f(x) d x$
+\item \COL{Linearität}  $\int_u a f(x)+b g(x) d x=a \int_u f(x) d x+b \int_u g(x) d x$ für $f, g: U \rightarrow \mathbb{R}$ stetig, $a, b \in \mathbb{R}$.
+\item \COL{Positivität} $f \leqslant g \Rightarrow \int_u f(x) d x \leq \int_u g(x) d x$ und $f \geqslant 0, V \leq U$ kompakt $\Rightarrow \int_V f(x) d x \leq \int_U f(x) d x$
+\item \COL{Dreiecksungleichung} $\left|\int_u f(x)+g(x) d x\right| \leq \int_u|f(x)| d x+\int_u|g(x)| d x$ und $\int_u f(x) d x \leqslant \int_u|f(x)| d x$	
+\item \COL{Volumen} $\int_u 1 d x=\text { Volumen von } U$
+\item \COL{Satz von Fubini} $n_1, n_2 \geqslant 1$ mit $n_1+n_2=n$. Sei
+	$$
+	\begin{aligned}
+	& U  \subseteq \mathbb{R}^{n} = \mathbb{R}^{n_1}  \times \mathbb{R}^{n_2}\\  
+	& V=\left\{x_1 \in \mathbb{R}^{n_1} \mid \exists x_2:\left(x_1, x_2\right) \in U\right\} \subseteq \mathbb{R}^{n_1} \\
+& W\left(x_1\right)=\left\{x_2 \in \mathbb{R}^{n_2} \mid\left(x_1, x_2\right) \in U\right\} \subseteq \mathbb{R}^{n_2}
+	\end{aligned}
+	$$
+	
+	Falls $ g: V \longrightarrow \mathbb{R}, \quad g\left(x_1\right)=\int_{W\left(x_1\right)} f\left(x_1, x_2\right) d x_2 $ stetig ist, dann:
+	$$
+	\begin{aligned}
+\int_u f(x) d x & =\int_V g\left(x_1\right) d x_1 \\
+& =\iint_{W\left(x_1\right)} f\left(x_1, x_2\right) d x_2 d x_1
+\end{aligned}
+	$$
+	
+\item \COL{Addivität bezüglich Integrationsbereichs}: $U_1, U_2 \subseteq \mathbb{R}^n$ kompakt, $f: U_1 \cup U_2 \rightarrow \mathbb{R}$ stetig
+	$
+\Rightarrow \int_{u_1 \cup u_2} f(x) d x=\int_{u_1} f(x) d x+\int_{u_2} f(x) d x-\int_{u_1 \cap u_2} f(x) d x
+$
+
+
+\end{enumerate}
+
+
+
+}
+
+\NOTE{Volumina}{
+\begin{itemize}[leftmargin=*]
+\item Kreis: $A = \pi r^2$, wobei $r =$ Radius
+\item Dreieck: $A = \frac{1}{2} b h$, wobei $b=$ Basis und $h=$ Höhe des Dreiecks
+\item Kugel: $V = \frac{4}{3} \pi r^3$, wobei $r=$ Radius
+\item Pyramide: $V = \frac{1}{3} s^2 h$, wobei $s =$ Seitenlänge der quadratischen Basis und $h= $ Höhe der Pyramide
+\item Kegel: $V = \frac{1}{3} \pi r^2 h$, wobei $r=$ Radius der Basis und $h= $ Höhe des Kegels ist.
+\item Ellipsoid: $V = \frac{4}{3} \pi a b c$, wobei $a$, $b$ und $c$ die Halbachsen des Ellipsoids sind.
+\end{itemize}
+
+
+
+}
+
+\DEF{4.2.3}{
+\begin{enumerate}
+\item  Für $1 \leqslant m \leqslant n$ ist eine parametrisierte $m$-Menge in $\mathbb{R}^n$ eine stetige Funktion
+ $$
+ f:\left[a_1, b_1\right] \times \cdots \times\left[a_m, b_m\right] \rightarrow \mathbb{R}^n
+ $$
+die $C^1$ auf $\left(a_1, b_1\right) \times \cdots \times\left(a_m, b_m\right)$ ist.
+ 
+ \item $B \subseteq \mathbb{R}^n$ heisst  \COL{vernachlässigbar} falls
+ $B \subseteq B_i / d\left(f_1\right) \cup \cdots \cup$ Bild $\left(f_k\right) \quad$ für $m_i$-Mengen $f_i$ mit $m_i<n$.
+\end{enumerate}
+}
+
+\NOTE{Def 4.2.3 Informell}{ Wir können die ganze Menge mit
+einer endlichen Menge an Rechtecken beliebiger
+Grösse überdecken.)}
+
+\PROP{4.2.5}{ Ist $U \subseteq \mathbb{R}^n$ kompakt und vernachlässigbar, dann $\int_u f(x) d x=0$ für alle $f \in C^0(u, \mathbb{R})$.}
+
+\mysubsection{\centering Uneigentliche Integrale}
+
+\NOTE{Limes in $\mathbb{R}$}{Falls Integrationsbereich $(- \infty, \infty)$ aufteilen in $(-\infty ,c]$ und $[c, \infty)$ und separat integrieren. Falls $+\infty - \infty$ nicht definiert. (Bsp: $x$)}
+
+\DEF{}{ Wir definieren zwei Arten von uneigentlichen Integrale
+\begin{enumerate}[leftmargin = *]
+\item $f:[a, \infty) \times I \rightarrow \mathbb{R}$ 
+\item $f: \mathbb{R}^2 \rightarrow \mathbb{R}$
+\end{enumerate}
+
+Es gilt
+\begin{enumerate}[leftmargin = *]
+
+\item $[c,d]$ ist ein kompaktes Intervall, $a \in \mathbb{R}$, und $f:[a, \infty) \times [c,d] \rightarrow \mathbb{R}$ stetig. Dann
+
+\begin{align*}
+&\int_{[a, \infty) \times [c,d]} f(x, y) d x d y:\\ &=\lim _{b \rightarrow \infty} \int_{[a, b] \times [c,d]} f(x, y) d x d y\\
+ &\overset{\underset{\mathrm{(1)}}{}}{=}\lim _{b \rightarrow \infty} \int_a^b \int_c^d f(x, y) d y d x\\ &=\int_a^{\infty} \int_c^d f(x, y) d y d x
+ \\
+ & \overset{\underset{\mathrm{(2)}}{}}{=}
+  \int_c^d  \underbrace{\int_a^{\infty} f(x, y) d x}_{:=g(y)} d y
+\end{align*}
+
+Das Integral konvergiert falls das Limit existiert ($\neq \pm \infty$)
+
+
+\item Für $f: \mathbb{R}^2 \rightarrow[0, \infty)$ (Funktionen die nur positiv sind) stetig ist, dann
+\begin{align*}
+&\int_{\mathbb{R}^2} f(x, y) d x d y\\&:=\lim _{R \rightarrow \infty} \int_{B_R(0)} f(x, y) d x d y \\&= \lim _{S \rightarrow \infty} \int_{[-S, S]^2} f(x, y) d x d y\\
+ &\overset{\underset{\mathrm{(1)}}{}}{=} \lim_{S \to \infty} \int_{-S}^{S}\int_{-S}^{S} f(x,y) dy dx\\
+ &\overset{\underset{\mathrm{(2)}}{}}{=} \int_{-\infty}^{\infty}\underbrace{\int_{-\infty}^{\infty} f(x,y) dy}_{:=g(x)} dx
+\end{align*}
+wobei $B_R(0)$ der Kreis um $0$ mit Radius $R$ ist. Das Gleiche erhält man wenn man Anstatt eine Scheibe ein Quadrat nimmt. 
+\begin{enumerate}
+\item[(1)] Fubini
+\item[(2)] falls $g(q)$ für alle $q \in \mathbb{R}$ konvergiert und stetig ist.
+
+\end{enumerate}
+\end{enumerate}
+}
+
+
+
+\NOTE{Negative Funktionen}{ Für Funktionen die Negativ sind: Zwei Funktionen definieren 
+
+\begin{align*}
+f_{+}(x)=\begin{cases}
+f(x) & \text{ falls } f(x)\geq 0 \\
+0 & \text{sonst}
+\end{cases}\\
+ f_{-}(x)=\begin{cases}
+-f(x) & \text{ falls } f(x)\leq 0 \\
+0 & \text{sonst}
+\end{cases}
+\end{align*}
+Das Ergebnis ist dann
+$$\int f(x) dx = \int f_{+} dx -  \int f_{-} dx$$
+
+}
+
+
+\mysubsection{\centering Transformationsformel}
+
+
+\KRZ{Transformation}{
+
+\begin{itemize}
+\item Definiere die Transformation 
+$  \begin{bmatrix}
+\phi_u(x,y) \\ \phi_v(x,y)
+\end{bmatrix} =\begin{bmatrix}
+u \\ v
+\end{bmatrix} $
+\item Benutze die Transformation um die Ränder des Integrals anzupassen
+\item Berechne die Inverse der Transformation
+$  \begin{bmatrix}
+\phi_x(u,v) \\ \phi_y(u,v)
+\end{bmatrix} =\begin{bmatrix}
+x \\ y
+\end{bmatrix} $
+\item Berechne $Det = \operatorname{Det}\mathcal{}J_{\phi(u,v)^{-1}}=\operatorname{Det} \begin{bmatrix}
+\partial x \phi_x & \partial y \phi_x \\
+\partial x \phi_y & \partial y \phi_y \\
+\end{bmatrix}$
+\item Benutze die Transformationsformel mit den angepassten Rändern. \hl{$Det$ nicht vergessen}
+\end{itemize} 
+
+
+
+} 
+\KRZ{Inverse Transformation}{
+Gegeben sei die Transformationsfunktion
+$\phi(x,y)= ...= (\phi_u(x,y) , \phi_v(x,y)) = (u,v)^T$
+Wir bekommen die Gleichungen
+$\phi_u(x,y)=u (I)$ und $\phi_v(x,y)=v (II)$.
+
+
+
+Löse  $(I)$ nach $y$ auf und Setze in $(II)$ ein $\Rightarrow$ inverse $x=..$
+
+Löse  $(II)$ nach $x$ auf und Setze in $(I)$ ein $\Rightarrow$ inverse $y=..$
+
+}
+
+\KRZ{Determinante}{
+Für $2\times 2$ Matrizen gilt
+$$\operatorname{det}\left|\begin{array}{ll}a & c \\ b & d\end{array}\right|=a d-b c$$
+Für $3 \times 3$ Matrizen nach Zeile/Reihe entwickeln und abweichslungsweise addieren/subtrahieren. (Man started bei $+$)
+
+}
+
+\KRZ{Standard Transformationen}{
+Schreibe das Integral um entsprechend der Transformationsformel.
+
+\begin{itemize}[leftmargin=*]
+\item Polar: $x^2 + y^2 = r^2 \Rightarrow x= r \cos(\theta), y = r \sin(\theta)$ mit $0\leq r < \infty, 0\leq\theta < 2 \pi$ und $\det = r$
+\item Elliptisch: $\frac{x^2}{a^2}+\frac{y^2}{b^2}=1 \Rightarrow x= ar \cos(\theta), y = br \sin(\theta)$ mit $0\leq r <\infty, 0\leq\theta < 2 \pi$ und $\det =abr$	
+\item Zylinder: $x^2 + y^2 = r^2 \Rightarrow  x= r \cos(\theta), y = r \sin(\theta), z=z$ mit $0\leq r < \infty,-\infty <z < \infty, 0\leq\theta < 2 \pi$ und $\det = r$
+\item Kugel: $x^2 + y^2 + z^2 = r^2 \Rightarrow  x=r\sin(\theta)\cos(\varphi),y=r\sin(\theta)\sin(\varphi), z = r \cos(\theta)$ mit $0\leq r < \infty, 0\leq \theta < \pi, 0 \leq  \varphi < 2\pi$ und $\det = r^2 \sin(\theta)$
+\end{itemize}
+
+\\
+\hl{Bei Radius $r^2$ Wurzel nicht vergessen}
+Falls Bedingungen gestellt werden, Ränder entsprechen anpassen. (z.B. bei $\theta$)
+Mann auch $-\pi \leq \theta < \pi$ anstatt $0\leq\theta < 2 \pi$ verwenden.
+}
+
+\NOTE{Winkel Anpassen}{
+Falls spezifische Quadranten:
+\begin{enumerate}[leftmargin = *]
+\item  $x \geq 0$ (Obere Hälfte der Scheibe) : $0 \leq \theta\leq \pi$
+\item   $y \geq 0$ (Linke Hälfte der Scheibe) : $\frac{\pi}{2} \leq \theta \frac{3\pi}{2}$
+\item $x \geq 0,y \geq0$ : $0 \leq \theta\leq \frac{\pi}{2}$
+\item $x \leq0,y \geq0$ : $\frac{\pi}{2} \leq \theta\leq \pi$
+\item $x\leq0,y\leq0$ : $\pi \leq \theta\leq \frac{3\pi}{2}$
+\item  $x\geq0,y\leq0$ : $\frac{3\pi}{2} \leq \theta\leq 2\pi$
+\end{enumerate}
+Andere Möglichkeiten:
+\begin{enumerate}[leftmargin = *]
+\item $x \geq y \geq0$ : $0 \leq \theta\leq \frac{\pi}{4}$
+\item $y \geq x \geq0$ : $\frac{\pi}{4} \leq \theta\leq \frac{\pi}{2}$
+\end{enumerate}
+}
+
+
+\KRZ{Komplexere Volumina}{
+Sei $D=\left\{ ... \right\}$ eine beliebige Menge mit Bedingungen die alle von einer Koordinate $x_i$ abhängen. Dann
+\begin{enumerate}[leftmargin=*]
+\item Querschnittsfläche berechnen durch Umformen $W(x_i)$
+\item Integrieren durch das Interval der Koordinate $x_i$
+\end{enumerate}}
+
+\DEF{}{$$
+ \int_{\bar{U}} f(\varphi(x))\left|\operatorname{det} f_{\varphi}(x)\right| d x=\int_{\bar{V}} f(y) d y
+$$
+wobei:
+\begin{itemize}
+
+\item $\bar{U}$ kompakt, $\bar{U}=U \cup B$ für $U$ offen, $B$ vernachlässigbar
+\item $\bar{V}$ kompakt, $\bar{V}=V \cup C$ für $V$ offen, $C$ vernachlässigbar
+ \item $f: \bar{V} \rightarrow \mathbb{R}$ stetig}
+\item $\varphi: \bar{U} \rightarrow \bar{V}$ stetig, und $C^1$ auf $U$
+\item $\varphi(U)=V$ und $\varphi: U \to V$ bijektiv
+\item $\left|\operatorname{det} f_{\varphi}(x)\right|$ lässt sich auf $\bar{U}$ stetig fortsetzen. (Funktion testen ob stetig auf $\bar{U}$)
+
+
+\end{itemize}
+
+\NOTE{Beispiele Transformation}{
+$$
+\int_{[0,a] \times[0,b]} f(x, y) d x d y=ab \int_0^1 \int_0^1 f(a x, b y) d x d y
+$$
+
+}
+
+\mysubsection{Schwerpunktberechnung}
+
+\DEF{}{Der \COL{Schwerpunkt} $\bar{x}\in \mathbb{R}^{n}$ einer kompakten Menge $U \subseteq \mathbb{R}^{n}$ ist gegeben durch
+ $$\bar{x_{i}}=\frac{1}{\operatorname{Vol}(U)} \int_{U}x_{i}dx$$}
+ 
+ 
+\NOTE{}{
+Für einen Kegel mit beliebiger Grundfläche (z.B. Pyramide) liegt der Schwerpunkt immer auf $\frac{1}{4}$ von dem Schwerpunkt der Grundfläche zur Spitze.  
+
+} 
+
+
+\mysubsection{Satz von Green}	
+
+In diesem Kapitel gilt: $\gamma$ stückweise $C^1$ und $\gamma ^{\prime}\neq \textbf{0}$ für alle $t \in[a, b]$ wo $\gamma^{\prime}(t)$ existiert.
+
+\KRZ{Fläche mit Satz von Green}{
+Gegeben sei eine Menge $C$ beschränkt durch $C_{\mathrm{pw}}^1$-Rand $\partial C$.
+\begin{enumerate}[leftmargin =*]
+\item Parametrisiere den Rand mit der Kurve $\gamma:[a, b] \rightarrow \mathbb{R}^2$: \COL{RC Parametrisierungen})
+\item Wähle $v$ so dass $\operatorname{rot}(f)=1$: $\vec{v}=(0,x)$ oder $\vec{v}=(-y,0)$
+\item Wende Satz von Green an:
+$$
+A = \int_{\gamma=\partial C} \vec{v} \cdot d \vec{s}=\int_a^b \vec{v}(\vec{\gamma}(t)) \cdot \vec{\gamma}^{\prime}(t) d t
+$$
+
+\end{enumerate}
+
+
+
+}
+
+\KRZ{Umgekehrter Satz von Green}{
+Gegeben sei ein Linienintegral über einer Funktion $F$, für die $\left(\frac{\partial F_2}{\partial x}-\frac{\partial F_1}{\partial y}\right)$ simpel ist. Die Form des Linienintegrals ist idealerweise ein rechteck.
+
+Berechne $\int_a^b \int_c^d \frac{\partial F_2}{\partial x}-\frac{\partial F_1}{\partial y} dx dy$, wobei das Rechteck die Eckpunkten $(a,c)$ und $(b,d)$ hat.
+
+
+
+}
+
+\DEF{4.6.1}{Eine einfache (= kreuzungsfreie) geschlossene Kurve in $\mathbb{R}^n$ ist ein Weg $\gamma:[a, b] \rightarrow \mathbb{R}^n$, sodass für $s, t \in[a, b]$ mit $s<t$ gilt: $\gamma(s)=\gamma(t) \Leftrightarrow s=a$ und $t=b$.}
+
+\SA{Jordanischer Kurvensatz}{
+Für $n=2\mathbb{R}^2 \backslash \operatorname{im}(\gamma)$ (wie definiert in 4.6.1) hat zwei Komponenten, eine beschränkte und eine umbeschränkte.
+}
+
+\SA{4.6.3 (Satz von Green)}{
+
+$X \subseteq \mathbb{R}^2$ kompakt, mit Rand $\partial X$ gleich der disjunkten Vereinigung einfach geschlossener Jordankurven $\gamma_{1, \ldots,} \gamma_k$.
+Ausserden liege $X$ stets links von $\gamma_i$.
+$f: U \rightarrow \mathbb{R}^2$ ein $C^1$-Vektorfeld für in offenes $U$ mit $x \subseteq U$. Dann:
+
+$$
+\int_X \underbrace{\frac{\partial f_2}{\partial x}-\frac{\partial f_1}{\partial y}}_{\text{2-dim. Rotation}} d x d y=\sum_{i=1}^k \oint_{\gamma_i} f \cdot d \vec{s}
+$$
+
+}
+
+\NOTE{}{
+Mit \COL{S 4.6.3} kann eine beliebige Funktion $g$ integrieren. Dafür wählt man nur $f$, sodass
+$$
+\operatorname{rot}(f) = g
+$$ 
+
+}
+
+\mysubsection{Lösungsmethoden}
+
+\KRZ{Partielle Integration}{
+Benutze Formel:
+$$
+I = \int_a^b u(x) v^{\prime}(x) d x=[u(x) v(x)]_a^b-\int_a^b v(x) u^{\prime}(x) d x .
+$$
+
+Für mehrere Iterationen benutze
+
+\begin{center}
+
+\begin{tabular}{l|ll}
+    & $D$ & $I$ \\ \hline
+$\textcolor[HTML]{1ebee6}{+}$   & $\textcolor[HTML]{1ebee6}{u}	$   & $v ^{\prime}$   \\
+$\textcolor[HTML]{00e4c1}{-}$   &  $\textcolor[HTML]{00e4c1}{u^{\prime}}$ &  $\textcolor[HTML]{1ebee6}{v}$ \\ 
+$\textcolor[HTML]{acfa70}{+}$   & $\textcolor[HTML]{acfa70}{u^{\prime\prime}}$  &   $\textcolor[HTML]{00e4c1}{\int v}$ \\ 
+$-$   & $\vdots$ &  $\textcolor[HTML]{acfa70}{\vdots}$ \\ 
+\end{tabular}
+\end{center}
+
+Das Resultat ist dann $\textcolor[HTML]{1ebee6}{uv} \textcolor[HTML]{00e4c1}{- u^{\prime} \int v} \ldots $.
+
+Man führt die Tabelle solange bis:
+\begin{itemize}[leftmargin = *]
+\item eine Zeile integrierbar/konstant wird. 
+\item eine Zeile $-I$ ergibt. (Dann umformen zu $2I = ...$ und lösen)
+\end{itemize}
+
+
+
+
+}
+
+\KRZ{Integration durch Substitution}{
+\begin{enumerate}[leftmargin = *]
+\item Wähle substitution $\textcolor[HTML]{1ebee6}{u= g(x)}$
+\item Bestimme $\textcolor[HTML]{1ebee6}{du = g(x) dx }$ und $\textcolor[HTML]{1ebee6}{dx = \frac{du}{g(x)}}$
+\item Ersetze alle vorkommenden $x$-Terme
+\end{enumerate}
+
+\begin{align*}
+\int_{a}^{b} f(x) dx &= \int_{\textcolor[HTML]{1ebee6}{g(a)}}^{\textcolor[HTML]{1ebee6}{g(b)}} f(x)[g(x)\mapsto u] \cdot  \textcolor[HTML]{1ebee6}{\frac{du}{g'(x)}} 
+\\ &= \int_{g(a)}^{g(b)} f(u) du
+\end{align*}
+
+}
+	
+ 
+
+\end{flushleft}
+
+

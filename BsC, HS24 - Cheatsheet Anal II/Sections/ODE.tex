@@ -1,0 +1,238 @@
+
+\mysection[Green]{\centering Differentialgleichungen}
+
+\NOTE{MC}{
+\begin{itemize}[leftmargin=*]
+\item ODE können nur von $y(x),y'(x),...,x$ abhängen jedoch nicht von $y(x+1), y'(\tan x), ...$
+\item In einer ODE muss eine Ableitung vorkommen.
+\item ODEs müssen nicht stetig sein.
+\item Ordnung : höchste Ableitung
+\item Linear (Def 2.2.1) : $y$ und deren Ableitungen kommen linear vor: $f=\sum_{0}^{n} a_i(x)y^{i}$ wo $a_i$ funktionen sein können, jedoch muss $a_0 = 1$ sein.
+\item Homogen (Def 2.2.1): Es gibt kein Term der NUR von $x$ abhängt. (Sobald $y$ vorkommt im Term dann ist ok.)
+\item $y(x)=c$ mit $c\neq 0$ kann kein Vektorraum bilden. Gilt auch für alle Ableitungen von $y(x)$
+\item Gewöhnliche DE können nur von einer Variable abhängen. 
+\end{itemize}
+
+
+}
+\NOTE{Log/Exp Regeln}{
+
+\begin{itemize}[leftmargin=*]
+\item $\log _a m+\log _a n=\log _a m n $
+\item $\log _a m-\log _a n=\log _a \frac{m}{n}$
+\item $ \log _a m^k=k \log _a m$
+\item $\log _b a=\frac{\log _C a}{\log _C b}\quad b\neq 1, c\neq 1$
+\item $e^{\log (x)x}=x^x$
+\item $a^x \cdot a^y=a^{x+y}$
+\item $a^x \div a^y=a^{x-y}$
+\item $a^{\frac{x}{y}}=\sqrt[y]{a^x}$
+\end{itemize}
+}
+
+
+
+\mysubsection{\centering Lösungsmethoden}
+\begin{itemize}[leftmargin = *]
+\item $ y'(x) =  a(x)y(x)\cdot b(x) \longrightarrow$ LGSM 1
+\item $G(y,y',\ldots,y^{(k)},x)$ mit $k>1 \longrightarrow$ LGSM 2
+\item $y'+ay=b \longrightarrow$ LGSM 3
+\item $y''+a_1y'+a_2y=b \longrightarrow$ LGSM 4
+\item $y^{(k)}+a_{k-1}y^{(k-1)}+\ldots +a_{0}y=b(x) $ mit Konstanten  $a_{i} \longrightarrow$ LGSM 5
+\end{itemize}
+
+
+
+
+\KRZ{LGSM1: Separation der Variabeln}{Sei eine ODE in der Form $$
+c(x)y'(x) =  a(y)\cdot b(x)
+ $$ mit $a,b,c$ stetig. 
+ 
+ Triviale Lösung gegeben durch $y(x)=0$. Daher nehmen wir nun an, dass $a(y)\neq 0$
+ Dann ist die Lösung der ODE gegeben durch  
+ 
+\begin{align*}
+ \Leftrightarrow y' \cdot c(x) &=  \frac {1}{a(y)}\cdot b(x) \\
+ \Leftrightarrow a(y) \cdot y' &= b(x) \\
+ \Leftrightarrow \int a(y) \cdot y'(x)dx &= \int \frac{b(x)}{c(x)}  dx + c\\
+ \Leftrightarrow A(y) &= B(x)+c\\
+ \Leftrightarrow y &= A^{-1}\left(B(x)+c \right)
+\end{align*}
+
+Beachte:
+\begin{align*}
+\ln |a| &= bx+c \\
+ |a| &= e^{bx}\cdot e^c \\
+a &= {\color{Red} \pm} e^{c} \cdot e^{bx}
+\end{align*}
+
+ 
+Falls die triviale Lösung $0$ und $y=\pm e^{c}\ldots$ kann man zu $C'$ umschreiben. Ansonsten triviale Lösung separat erwähnen. Falls $y^2 + ay = ...$ als Lösung, Mitternachtsformel verwenden und lösen. 
+ }
+ 
+ 
+
+\KRZ{LGSM 2: Systemisierung}{Eine ODE von Ordnung $k \geq 2$ lässt sich als System von $k$ ODEs von Ordnung 1 in unbekannten Funktionen $z_0,\ldots,z_{k-1}$ umschreiben. Dafür setzt man $z_{i}=y^{(i)} \forall i [0,k]$ und erhält die Bedingungen $z_{i}^{\prime}=z_{i+1}$}
+
+\EX{ODE mit $k \geq 2$}{Die ODE \begin{align*}
+\exp(y''\cdot y'+\sin(y^{x+1})) =3
+\end{align*} kann umgeformt werden zu \begin{align*}
+\left\{\begin{array}{l}
+\exp \left(z_1^{\prime} z_1+\sin \left(z_0^{x+1}\right)\right)=3 \\
+z_0^{\prime}=z_1
+\end{array}\right\}
+\end{align*}
+
+}
+
+
+\KRZ{LGSM 3: Variation der Konstanten}{
+Sei $y'+ay=b$.
+\begin{itemize}
+\item Falls $b=0$:
+Verwende \COL{LGSM1} und erhalte  $$f(x)=z\cdot e^{-A(x)}$$, für $A$ eine Stammfunktion von $a$. $z\in \mathbb{C}$. 
+
+\item Falls $b\neq0$:
+\begin{enumerate}[leftmargin = *]
+\item finde $f_{h}$ durch Fall $b=0$
+\item Finde $f_{p} =e^{-A(x)}\int e^{A(x)}b(x) dx$ oder durch ersetzen von $c\to c(x)$, einsetzen und auflösen.
+\item Die Lösung ist gegeben durch $F = \lambda f_h +f_{p}$
+\end{enumerate}
+\end{itemize}
+
+\hl{$e^{-\ln(x)}=x^{-1}=\frac{1}{x}$}
+}
+
+
+
+
+\KRZ{LGSM 5: Charakterisches Polynom}{
+$y^{(k)}+a_{k-1}y^{(k-1)}+\ldots +a_{0}y=b(x) $ mit Konstanten  $a_{i}$.\\
+Falls $b=0$:\\
+\begin{enumerate}[leftmargin = *]
+\item Setze $e^{\lambda x}$ in die Gleichung ein ergibt $P(\lambda)$
+\item Suche die Nullstellen $\lambda_i$ von $P(t)$ Nutze Formel: $x_{1,2}=\frac{-b \pm \sqrt{b^2-4 a c}}{2 a}$ Falls in $\mathbb{C}$ benutze \COL{RC Komplexe Wurzeln}. Alternativ Schätze mit \COL{Rational Root Theorem}
+
+
+\item Sei $k_i$  die Vielfachheit von $\lambda_i$ und $l=\operatorname{deg}(P(t))$. Die Basis ist gegeben durch:$\left\{x^{j}e^{\lambda_{i}x} \mid i \in [0,l], j \in [0,k_{i}-1] \right\}$
+\item Falls Reelle Lösungen gesucht und $a_i\in \mathbb{R}$ und sei $(\l \pm m i)$ eine Nullstelle des char. Polynom. Dann gilt
+$e^{lt} \left[ c_1 \cos (mt)+c_2 \sin (mt) \right] $
+
+
+\end{enumerate}
+
+Falls $b=\sum c_{i}(x)\neq 0$:\\
+\begin{enumerate}[leftmargin = *]
+\item Berechne $f_h$
+\item Nutze Superpositionsprinzip und löse $y^{(k)}+a_{k-1}y^{(k-1)}+\ldots +a_{0}y=c_{i}(x)$ für alle $i$. Benutze dafür Educated Guess. 
+\item Setze Guess in Gleichung ein machen den Koeffizientenvergleich und löse das SLE. Die Lösung für den Guess ist $f_i$. Falls die Lösung gleich ist mit der Homogenen, multipliziere mit $x$.
+\item Die Gesamtlösung ist $f=f_h + \sum f_i$ für alle Summanden von $b(x)$
+\end{enumerate}
+$x=g(t), y=t$
+
+Für eine Basis $\mathcal{S}$ ist die Lösung gegeben durch $\sum_{\mathcal{S}} c_i s_i$ wobei $s_i$ Elemente aus $\mathcal{S}$ sind.
+
+
+}
+\KRZ{Educated Guess}{
+Sei $j$ die Multiplikativität der Nullstelle $\alpha$ des char. Polynoms der zugehörigen homogenen ODE. Sei zusätzlich $\operatorname{deg}(P_{i})\leq d$
+
+Für $b(x)=$
+\begin{enumerate}[leftmargin =*]
+\item $e^{\alpha x} P_{1}(x)$ 
+\item $P_1(x)\cos(\alpha x)+P_2(x)\sin(\alpha x)$
+\item $P_1(x)\cosh(\alpha x)+P_2(x)\sinh(\alpha x)$ 
+\item $e^{\beta x} P_1(x)\cos(\alpha x)+ e^{\beta x} P_2(x)\sin(\alpha x)$
+\end{enumerate}
+ist der Ansatz ...
+\begin{enumerate}[leftmargin =*]
+\item $Q_{1}(x)e^{\alpha x}$
+\item $Q_1(x)\cos(\alpha x)+Q_2(x)\sin(\alpha x)$
+\item $Q_1(x)\cosh(\alpha x)+Q_2(x)\sinh	(\alpha x)$
+\item $e^{\beta x} Q_1(x)\cos(\alpha x)+ e^{\beta x} Q_2(x)\sin	(\alpha x)$
+\end{enumerate}
+Die Polynome $Q_i$ haben alle Grad $d+j$. Falls der Ansatz bereits Teil der homogenen Lösung ist, wird der Ansatz mit $x$ multipliziert.
+
+
+
+
+
+}
+
+\KRZ{Komplexe Wurzeln}{
+Sei $x^d= a+ b \i$
+\begin{enumerate}[leftmargin = *]
+
+\item Konvertiere zu Polar: $r\cdot \exp \i \phi$ mit $r=\sqrt[2]{a^2 + b^2}$ und für $\phi$ gilt
+\begin{itemize}[leftmargin = *]
+\item $(a>0, b>0): \theta=\tan ^{-1}\left(\frac{b}{a}\right)$
+\item  $(a<0, b>0): \theta=\pi+\tan ^{-1}\left(\frac{b}{a}\right)$.
+\item  $(a<0, b<0): \theta=\pi+\tan ^{-1}\left(\frac{b}{a}\right)$.
+\item  $(a>0, b<0): \theta=2 \pi+\tan ^{-1}\left(\frac{b}{a}\right)$.
+\item $(a = 0, b > 0) : \theta= \pi / 2 $
+\item $(a = 0, b < 0) : \theta= 3 \pi / 2$
+\item $(a > 0, b = 0) :  \theta=0 $
+\item $(a < 0, b = 0) : \theta= \pi $
+\end{itemize}
+\item Berechne Wurzel mit $z_{1,2,..,d} = \exp  \i \left(\frac{\phi + 2k\pi}{d} \right)$ für $k= 0,1,...,d-1$.
+\item Konvertiere zurück: $a + b \i$ mit $a = r \cos \phi$, $b=r\sin \phi$. Auf Einheitskreis: ($\cos,\sin$)
+\end{enumerate}
+
+
+}
+ \KRZ{Rational Root Theorem}{
+Man kann alle möglichen Nullstellen beschreiben mit
+
+$$
+\left\{\left.\frac{p}{q} \right\rvert\, p \mid d \text { und } q \mid a\right\} 
+$$
+ , wobei $d$ die Konstante ist und $a$ der leitende Koeffizient. e.g. $ax^n +\ldots cx + d = 0$. $a\mid b$ heisst $a$ teilt/ist ein Faktor von $b$
+ }
+ 
+ \mysubsection{\centering Definitionen \& Theoreme}
+
+ \DEF{Gewöhnliche Differentialgleichung}{
+Eine Gleichung der Form 
+\begin{align*}
+G(y,y',\ldots,y^{(k)},x)=0
+\end{align*}
+ heisst gewöhnliche Differentialgleichung und $k\geq 1$ heisst \COL{Ordnung} der ODE. Ist zusätzlich $y(x_{0)}= y_{0},y'(x_{0})=y_{1}\ldots , y^{(k)}(x_0)=y_{k-1}$ mit $x_{0}, y_{0}, \ldots y_{k-1} \in \mathbb{R}$ gegeben spricht man von einem \COL{Anfangswertproblem}. 
+ \begin{itemize}[leftmargin=*]
+ \item \COL{autonom}: $G$ nicht abhängig von $x$
+ \item \COL{explizit}: Gleichung der Form $y^{(k)}= ...$, mit $k$ höchste Ableitung
+ \end{itemize}
+}
+
+
+\SA{2.16: Existenz- & Eindeutigkeitssatz (kurz)}{Ein Anfangswertproblem $y'=F(y,x)$, $y(x_0)=y_{0}$ mit $F$ stetig differenzierbar hat genau eine maximale Lösung}
+
+\SA{2.16: Existenz- & Eindeutigkeitssatz}{ Angenommen, $F: \mathbf{U} \subseteq \mathbb{R}^{2} \rightarrow \mathbb{R}$ ist eine stetig differenzierbare Funktion von zwei Variablen. Sei $(x_{0},y_{0}) \in \mathbf{U}$. Dann hat die gewöhnliche Differentialgleichung
+ 
+ \begin{align*}
+  y^{\prime}=F(x, y)
+ \end{align*}
+eine Lösung $f$. Falls $\partial_y F$ existiert und stetig ist, so gibt es eine maximale Lösung.}
+
+
+
+\DEF{2.2.1: Lineare ODE}{Eine Lineare ODE von Ordnung $k\geq 1$ ist eine Gleichung $$y^{(k)}+ a_{k-1}y^{(k-1)}+ \ldots + a_{0}y = b $$ wobei die \COL{Koeffizienten} $a_{0}, \ldots, a_{k-1}$ und die \COL{Homogenität} $b$ Funktionen $I\subseteq \mathbb{R} \to \mathbb{C}$ sind. Wobei $I \subseteq \mathbb{R}$ ein offenes Intervall ist. Eine Lösung ist eine $k$-mal differenzierbare Funktion $f:I\to \mathbb{C}$ mit $y^{(k)}+ a_{k-1}y^{(k-1)}+ \ldots + a_{0}y = b$ für alle $x \in I$.
+ Falls $b=0$, heisst die Gleichung \COL{homogen} und sonst inhomogen.
+ Die Gleichung $$ y^{(k)}+ a_{k-1}y^{(k-1)}+ \ldots + a_{0}y = 0$$ heisst \COL{zugehörige homogene lineare ODE} }
+
+
+\SA{2.2.3}{Annahme: $a_{0},\ldots, a_{k-1}$ stetig. Dann gilt:
+\begin{itemize}[leftmargin = *]
+
+\item  Die Lösungen der \COL{homogenen} linearen ODE bilden einen komplexen Vektorraum $S$ mit $\dim_{\mathbb{C}}S=k$
+\item   Die \COL{inhomegene} ODE hat eine Lösung $f_0$. Die Menge aller Lösungen ist genau der affine Raum $f_{0}+S$
+\item   Falls $y_{0},\ldots, y_{k-1}\in \mathbb{C}$: Für beliebige $x_{0}\in I$ ,  hat das Anfangswertproblem und $y(x_{0})=y_{0}$, $y\left(x_0\right)=y_0, \ldots, y^{(k-1)}\left(x_0\right)=y_{k-1}$ genau eine Lösung
+\item    Falls $y_{0},\ldots, y_{k-1}\in \mathbb{R}$: $\operatorname{dim}_{\mathbb{R}}\{$ reellwertige $f \in S\}=k$, die  homogene Gleichung hat eine reellwertige Lösung $f_0$
+\item   	 Die inhomegene hat die Lösung $\left\{\text{reellwertige Lösungen} \right\} = f_{0}+ \left\{ \text{reellwertige } f \in S\right\}$ 
+\item   	 Für $x_0 \in I, y_0, \ldots, y_{k-1} \in \mathbb{R}$ hat das entsprechende Anfangswertproblem genau eine Lösung.
+
+\end{itemize}}
+
+
+\SA{2.2.5: Superpositionsprinzip}{
+Löst $f_{0}$ die ODE mit inhomogenität $b$ und
+$g_{0}$ die ODE mit inhomogenität $c$ 
+Dann löst $\lambda f_{0}+ \mu g_{0}$ die ODE mit inhomogenität $\lambda b + \mu c$}

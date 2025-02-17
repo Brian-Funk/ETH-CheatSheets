@@ -1,0 +1,706 @@
+
+\mysection[BlueViolet]{\centering Differential}
+
+
+\mysubsection{\centering Stetigkeit}
+
+
+\KRZ{Stetigkeit}{
+\begin{enumerate}[leftmargin=*]
+\item Falls $f=g \star h$ mit $\star \in \left\{\circ,\cdot , \pm, \div : h\neq 0 \right\}$  und $g,h$ sind stetig dann ist $f$ stetig. Gilt auch wenn $f(x,y)=g(x) \star h(y)$ [Prop 3.2.9]
+\item Für $f: U \subseteq \mathbb{R}^{n} \to \mathbb{R}^{m}$ gilt: $f$ stetig bei $x_0 = \lim_{\substack{x\to x_{0}\\ x \neq x_{0}}} x \Longleftrightarrow \displaystyle \lim_{\substack{x\to x_{0}\\ x \neq x_{0}}} f(x)=f(x_0)$[Prop 3.2.8] Man kann
+\begin{itemize}[leftmargin=*]
+\item Stetigkeit widerlegen durch Gegenbeispiel (z.B. testen ob$\lim_{(0,y)\to(0,0)}f=\lim_{(x,0)\to(0,0)}f$)
+\item Limit zeigen durch \COL{RC Limits}
+\end{itemize}
+\item Für $f: U \subseteq \mathbb{R} \to \mathbb{R}^{m}$ gilt:$f = (f_1 \ldots f_m)$ ist stetig wenn $\forall i \in \left\{0,m \right\} f_i$ stetig ist
+
+\end{enumerate}}
+
+
+\DEF{Norm}{Die Norm von $x \in \mathbb{R}^{n}$ ist 
+$$
+\left\|x \right\| =\sqrt{x_{1}^{2}+x_{2}^{2}+ \ldots +x_{n}^{2}}
+$$}
+
+\DEF{Injektion}{
+Für $f: A \rightarrow B$,
+$$
+\forall x_1, x_2 \in A, f\left(x_1\right)=f\left(x_2\right) \Longrightarrow x_1=x_2
+$$
+
+}
+
+\DEF{Surjektion}{
+Für $f: A \rightarrow B$,
+$$
+\forall y \in B, \exists x \in A \text { so dass } f(x)=y
+$$
+
+}
+
+\DEF{3.2.8: Stetigkeit }{$U \subseteq \mathbb{R}^{n}$,$f:U \to \mathbb{R}^{m}$ heisst stetig bei $x_{0}\in U$ falls für alle $\epsilon >0$ ein $\lambda >0$ existiert, sodass gilt:
+ $$
+ x \in U \quad \left\|x-x_0 \right\| < \lambda \Rightarrow \left\|f(x)-f(x_{0})\right\| < \epsilon$$
+  
+  Die Funktion $f$  heisst stetig, wenn es bei allen $x_{0} \in U$ stetig ist}
+  
+ 
+\DEF{3.2.1: Konvergenz einer Folge}{Eine Folge $x_{1}, x_{2}, \ldots \in \mathbb{R}^{n}$ konvergent gegen $y  \in  \mathbb{R}^{n}$ falls für alle $\epsilon > 0$ ein $N$ existiert, sodass für alle $$k\leq N \quad \left\|x_{k}-y \right\| <\epsilon $$}
+
+ 
+ \PROP{3.2.4}{$U \subseteq \mathbb{R}^{n}$,$f:U \to \mathbb{R}^{m}$ heisst stetig bei $x_{0}\in U \Leftrightarrow$ Für alle Folgen $x_{1},x_{2}\ldots  \in U$ mit $\lim_{k \to \infty}x_{n}=x_{0}$ gilt $\lim_{k \to \infty} f(x_{n})=f(x_{0})$}
+ 
+ \PROP{3.2.9}{$f,g$ stetig $\Rightarrow g \circ f$ stetig}
+ 
+ 
+
+
+\PROP{3.2.8}{$U \subseteq \mathbb{R}^n$,$f:U\to \mathbb{R}^m$ ist genau dann bei $x_{0} \in U$ stetig, wenn $\displaystyle \lim_{\substack{x\to x_{0}\\ x \neq x_{0}}} f(x)=f(x_0)$}
+
+
+
+\mysubsection{\centering Limits}
+
+\KRZ{Limits}{
+\begin{enumerate}[leftmargin=*]
+\item Überprüfe ob Limit trivial existiert durch einsetzen
+\item Vereinfache zu einer Variable (i.e. $x=0$ oder $y=x$) und berechne Limits. Wenn unterschiedliche Ergebenisse $\Rightarrow$ nicht definiert.
+\item \COL{Polarkoordinatentrick} : $x=r\cos(\phi)$, $y=r\sin(\phi)$ und $x^2 +y^2 =r^2$. Limit berechnen. Falls limit nur vom Winkel abhängt $\Rightarrow$ Limit undefiniert
+\item \COL{Sandwich Lemma} : Funktioniert nur für $\mathbb{R}^n \mapsto \mathbb{R}$. Falls $\mathbb{R}^n \mapsto \mathbb{R}^m$ komponentenweise anwenden.
+\begin{itemize}[leftmargin=*]
+\item Limits nach $0$: Def $g$ so dass $|f|\leq g$ mit $\lim_{x\to x_0}g(x) = 0$
+\item Limits nach $\pm \infty$: Def $g$ so dass $f\leq | \geq g$ mit $\lim_{x\to x_0}g(x) = \pm \infty$
+\item Limits nach $c$: Def $g_1$,$g_2$, so dass $g_1 \leq f \leq g_2$ und $\lim_{x\to x_0}g(x) = c$
+\end{itemize}
+
+\end{enumerate}
+
+
+}
+
+\LEM{3.2.2 }{
+(Die letzen zwei limes in $\mathbb{R}$ der erste in $\mathbb{R}^n$)
+\begin{align*}
+&\lim_{k \to \infty } x_{k}=y\\
+ \iff &\lim_{k \to \infty } ||x_{k}-y||=0\\
+ \iff &\lim_{k \to \infty } x_{k,l}=y_{l} \qquad (\text{für alle }1 \leq l \leq n)\\
+ \end{align*}}
+
+\DEF{3.2.5: Grenzwert }{Sei $U \subseteq \mathbb{R}^n$,$f:U\to \mathbb{R}^m$. Der Grenzwert von $f$ bei $x_{0}\in U$, geschrieben  $\displaystyle \lim_{\substack{x\to x_{0}\\ x \neq x_{0}}} f(x)$, ist gleich $y$, falls für alle $\epsilon > 0$ ein $\lambda >0$ existiert, sodass gilt 
+  $$
+ x\in U , \quad \left\|x - x_{0} \right\|< \lambda , x \neq x_{0}\Rightarrow \left\|f(x)-y \right\| < \epsilon
+ $$}
+
+\PROP{3.2.7}{$\displaystyle \lim_{\substack{x\to x_{0}\\ x \neq x_{0}}} f(x)=y \Leftrightarrow$ Für jede Folge $x_{1}, \ldots \in U$ mit $\lim_{k \to \infty} x_{k}= x_{0}$ und $x_{k}\neq x_0$ gilt $\lim_{n\to \infty} f(x_n)=y$ }
+
+\LEM{Sandwich}{Falls $f, g, h$ Funktionen sind mit $f(\boldsymbol{x})<g(\boldsymbol{x})<h(\boldsymbol{x}) \forall \boldsymbol{x} \in \mathbb{R}^n$. Sei $a \in \mathbb{R}^n$. Falls $\lim _{x \rightarrow a} f(x)=\lim _{x \rightarrow a} h(x)=L$, dann gilt $\lim _{x \rightarrow a} g(x)=L$.}
+
+\mysubsection{\centering Sets}
+
+\KRZ{Sets erkennen}{
+\begin{itemize}[leftmargin=*]
+\item Falls Rand enthalten $\Rightarrow$ Set abgeschlossen (i.e. $\left\{(x, y) \in \mathbb{R}^2 \mid x^2+y^2 \leq 1\right\}$)
+\item Falls Rand nicht enthalten $\Rightarrow$ Set offen (i.e. $\left\{(x, y) \in \mathbb{R}^2 \mid x^2+y^2<1\right\}$, $\{x \in \mathbb{Q} \mid \sin (x) \leq 0\} .$)
+\item Falls Set überdeckbar mit endlicher Form $\Rightarrow$ Set beschränkt
+\end{itemize}
+
+}
+
+
+\NOTE{MC}{
+
+Sei hier $f: \mathbb{R}^{n}\to \mathbb{R}^{m}$ stetig. 
+\begin{itemize}[leftmargin=*]
+\item Endliche sets sind automatisch beschränkt, abgeschlossen und somit auch kompakt.
+\item $\mathbb{R}^n, \mathbb{N}^n, \mathbb{Z}^n$ sind abgeschlossen
+\item Krossprodukte $A \times B$ von abgeschlossenen Mengen sind abgeschlossen
+\item abgeschlossene und offene Mengen sind komplemente, jedoch sind  $\varnothing, \mathbb{R}^{n}$ beides.
+\item $\bigcup^{\infty}_{i=0} A_{i} $ ist offen falls $A_i$ offen
+\item $\bigcap^{\infty}_{i=0} A_{i} $ ist abgeschlossen falls $A_i$ abgeschlossen
+\item $\bigcup^{C}_{i=0} A_{i} $ ist offen falls $A_i$ offen
+\item $\bigcap^{C}_{i=0} A_{i} $ ist abgeschlossen falls $A_i$ abgeschlossen
+\item Falls Vermischung von abgeschlossen/offen ist das Ergebnis weder noch ausser in speziellen Fällen  (z.B. eine offene Menge enthält eine abgeschlossene Menge vollständig).
+\item $A \subset \mathbb{R}^n$ abgeschlossen $\not \Rightarrow f(A)$ abgeschlossen.
+\item $A \subset \mathbb{R}^n$ abgeschlossen $ \Rightarrow f^{-1}(A)$ abgeschlossen.
+\item $A \subset \mathbb{R}^n$ beschränkt $ \Rightarrow f(A)$ beschränkt.
+\item $A \subset \mathbb{R}^n$ beschränkt $\not \Rightarrow f^{-1}(A)$ beschränkt.
+\item Falls $A \subseteq \mathbb{R}^n$ abgeschlossen $\Rightarrow$ $\mathbb{R}^n \setminus A$ offen
+\end{itemize}
+
+
+
+}
+
+\DEF{3.2.11}{
+\begin{enumerate}[leftmargin=*]
+\item Eine Teilmenge \(X \subset \mathbf{R}^n\) ist \COL{beschränkt}, wenn die Menge der \(\|x\|\) für \(x \in X\) in \(\mathbf{R}\) beschränkt ist.
+
+\item Eine Teilmenge \(X \subset \mathbf{R}^n\) ist \COL{abgeschlossen}, wenn für jede Folge \(\left(x_k\right)\) in \(X\), die in \(\mathbf{R}^n\) gegen einen Vektor \(y \in \mathbf{R}^n\) konvergiert, gilt: \(y \in X\):\\$x_1, x_2, \ldots \in X, \lim _{k \rightarrow \infty} x_k=y \in \mathbb{R}^n \Rightarrow y \in X$
+
+\item Eine Teilmenge \(X \subset \mathbf{R}^n\) ist \COL{kompakt}, wenn sie beschränkt und abgeschlossen ist.
+\item Eine Teilmenge \(X \subset \mathbf{R}^n\) ist \COL{offen}, wenn für alle \(x \in U\) ein \(\delta > 0\) existiert, so dass \(\{ y \in \mathbb{R}^{n} \mid |x_{i}-y_{i}| < \delta \text{ für alle }i \}\).
+\end{enumerate}
+}
+
+\PROP{3.2.2}{$U \subseteq \mathbb{R}^{n} \text{ abgeschlossen} \iff \mathbb{R}^{n}\setminus U \text{ offen}$}
+
+
+\PROP{3.2.13}{
+Ist $f: \mathbb{R}^{n}\to \mathbb{R}^{m}$ stetig, dann:
+  
+\begin{itemize}[leftmargin=*]
+\item $U \in \mathbb{R}^{m} \text{ offen}\implies f^{-1}(U) \subseteq \mathbb{R}^{n} \text{ offen}$
+\item $U \in \mathbb{R}^{m} \text{ abgeschlossen}\implies f^{-1}(U) \subseteq \mathbb{R}^{n} \text{ abgeschlossen}$
+\end{itemize}   
+
+Mit \hl{$f: \mathbb{R}^{n}\to \mathbb{R}^{m}$ stetig muss $f$ auf ganz $\mathbb{R}^{n}$ stetig} sein. D.h. Funktionen wie $\frac{1}{x}$ sind nicht erlaubt.
+
+(hier $f^{-1}(U)$ ist das Urbild von $f$ auf $U$)
+} 
+
+\THE{3.2.15}{Sei $U \subset \mathbf{R}^n$ eine nicht-leere kompakte Menge und $f: U \rightarrow \mathbf{R}$ eine stetige Funktion. Dann ist $f$ beschränkt und erreicht ihr Maximum und Minimum. Anders ausgedrückt existieren $x_{+}$ und $x_{-}$ in $U$, so dass
+
+$$
+\forall y \in U: f\left(x_{-}\right) \leqslant f(y) \leqslant f\left(x_{+}\right) .
+$$
+}
+
+
+\mysubsection{\centering Partielle Ableitung}
+
+\KRZ{Beweise Existenz von Richtungsableitungen}{
+Sei $f$ gegeben die Stückweise definiert ist: 
+$f(x, y)= \begin{cases} f_1 & \text { falls }(x, y) \neq(a,b) \\ C & \text { falls }(x, y)=(a,b)\end{cases} $
+\begin{enumerate}[leftmargin=*]
+\item \hl{Für $(x,y)\neq(a,b)$ und alle normalen Funktionen, reicht es zu zeigen, dass alle Richtungsableitungen existieren. Mit \COL{Prop 3.4.15} folgt dann, dass alle Richtungsableitungen existieren.}
+\item Für $(x,y)=(a,b)$: Benutze Definition des  Limits und berechne $\lim_{t\to 0}\frac{f ((a,b)+t(u,v))}{t}$
+\end{enumerate}
+}
+
+\DEF{3.3.5}{
+$U \subseteq \mathbb{R}^n$ offen, $f: U \longrightarrow \mathbb{R}$. Für $i \in\{1, \ldots, n\}$ ist die $i$-te partielle Ableitung von $f$ bei $y \in U$
+$$
+\partial_i f(y)=g^{\prime}\left(y_i\right) \in \mathbb{R}
+$$
+
+für $g:\left\{t \in \mathbb{R} \mid\left(y_1, \ldots, t, \ldots, y_n\right) \in U\right\} \rightarrow \mathbb{R}$
+
+$$
+g(t)=f\left(y_1, \ldots, t, \ldots, y_n\right)
+$$
+
+falls $g$ bei $t=y$ differenzierbar ist.}
+
+
+\DEF{3.3.11}{$U \subseteq \mathbb{R}^{n}$ offen:
+     
+Der \COL{Gradient} von $f:U\to \mathbb{R}$ ist:
+     
+ $$\text{grad } f(x) = \nabla f(x)= \left(\begin{array}{c}
+     
+ \partial_{x_1} f\left(x\right) \\
+     
+ \vdots \\
+     
+  \partial_{x_n} f\left(x\right)
+     
+  \end{array}\right)$$
+  
+  Die \COL{Divergenz} von $f:U \to \mathbb{R}^{n}$ ist:\begin{align*}
+  \text{div } f(x)&=\partial x_{1}f_{1}(x)+\dots+\partial x_{n}f_{n}(x)\\
+  &=\text{spur}(J_{f}(x))  = \sum_{i=1}^n \frac{\partial f}{\partial x_i}
+  \end{align*}
+  
+  
+  
+  }
+
+\NOTE{Eigenschaften Divergenz/Gradient}{
+Seien jetzt $F: \mathbb{R}^3 \rightarrow \mathbb{R}^3 C^2, \varphi: \mathbb{R}^3 \rightarrow \mathbb{R} C^2$ und $R: \mathbb{R}^3 \rightarrow \mathbb{R}^3$ eine invertierbare Matrix. Es gilt
+\begin{itemize}[leftmargin=*]
+\item $(\operatorname{curl} F)_i=\partial_{i+1} F_{i+2}-\partial_{i+2} F_{i+1}$, mit zyklischen Indizes $i \in [1,3]$
+\item $\operatorname{curl}(\nabla \varphi)=0$.
+\item $\operatorname{div}(\operatorname{curl}(F))=0$
+\item $\operatorname{div}\left(R^{-1} \circ F \circ R\right)(x)=\operatorname{div} F(R(x))$
+\item $\nabla f(x_0)$ zeigt in die Richtung des grössten Anstiegs an dem Punkt $x_0$
+
+\end{itemize}
+
+
+
+
+}  
+  
+  \DEF{3.3.9}{$U \subseteq \mathbb{R}^{n}$ offen, $f:U\to \mathbb{R}^{m}$
+$f=(f_{1},\dots,f_{m})$ mit $f_{i}:U\to \mathbb{R}$
+Die $m \times n$ Matrix:$$J_{f}(x)=\left(\partial x_{i}, f_{i}(x)\right)_{\substack{1 \leqslant i \leqslant m \\1 \leqslant j \leqslant n}} =
+\left(\begin{array}{lll}
+\frac{\partial f_1}{\partial x_{1}} & \ldots& \frac{\partial f_1}{\partial x_{n}} \\
+\vdots & . & \vdots \\
+\frac{\partial f_{m}}{\partial x_{1}} & \ldots & \frac{\partial f_{m}}{\partial x_{n}}
+\end{array}\right)   $$}
+
+\mysubsection{\centering Differential}
+
+\NOTE{Regeln}{
+\begin{itemize}[leftmargin=*]
+\item $\frac{d}{d x}[f(x) g(x)]=f(x) g^{\prime}(x)+g(x) f^{\prime}(x)$
+\item $\frac{d}{d x}\left[\frac{f(x)}{g(x)}\right]=\frac{g(x) f^{\prime}(x)-f(x) g^{\prime}(x)}{[g(x)]^2}$
+\item $\frac{d}{d x} g(f(x))=g^{\prime}(f(x)) f^{\prime}(x)$
+\end{itemize}
+
+
+}
+
+\KRZ{Beweise Differenzierbarkeit}{
+Sei zu beweisen dass $f$ differenzierbar ist. 
+\begin{enumerate}
+\item Verwende \COL{Prop 3.4.6} um zu zeigen, das multiplikationen und additionen von differenzierbaren Funktionen differenzierbar sind. \hl{Nicht differenzierbar sind  $\sqrt{\cdot}, |\cdot|, $}
+\item Berechne alle partiellen Ableitungen, falls diese stetig sind folgt mit \COL{Prop 3.4.7}, dass $f$ differenzierbar ist. Falls sie nicht existieren, dann kann $f$ gemäss \COL{Prop 3.4.4} auch nicht differenzierbar sein. 
+\item für $f=(f_1, \ldots , f_m$) ist $f$ differenzierbar $\Leftrightarrow \forall f_i $ differenzierbar ist 
+\item Zeige, dass $f$ nicht stetig ist $\Rightarrow$ $f$ kann nicht differenzierbar sein.
+\item Falls Richtungsableitung $D_{(u,v)}f$ nicht linear in $(u,v)$ ist, kann $f$ nach \COL{Prop 3.4.15} differenzierbar sein.
+\end{enumerate}}
+
+
+\KRZ{Dreigliedentwicklung}{
+Gegeben sei eine Funktion $f: \mathbb{R}^n \mapsto \mathbb{R}$ und die Entwicklungsstelle $p_0 = (x_1,  \ldots, x_n)$
+\begin{enumerate}
+\item Berechne $f(p_0)$
+\item Berechen $\mathcal{J}_f(p_0)$
+\item Die Dreigliedentwicklung ist dann $f(p)=f(p_0)+\mathcal{J}_f(p_0) (p-p_0) + \sigma \left\| p - p_0\right\|$
+\end{enumerate}
+
+}
+
+\KRZ{Tangentialebene}{
+Gegeben sei eine Funktion $f: \mathbb{R}^2 \mapsto \mathbb{R}$ und den Punkt $p_0=(x,y)$, an welcher die Tangentialebene anliegt.
+
+\begin{enumerate}
+\item Berechne die Dreigliedentwicklung von $f(p)= C + (ax + by) + \sigma\left\| p - p_0\right\|$. Alternativ kann man auch das TP ersten Grades berechnen.
+\item Ebene ist gegeben durch: 
+$ \left\{ (x,y,z) \mid x,y \in \mathbb{R}, z = C + ax+by   \right\} $
+\item Falls $\mathcal{J}_f= \mathbf{0}$ dann ist Ebene
+\end{enumerate}
+Analog kann der \COL{Tangentialraum} für $f: \mathbb{R}^n \mapsto \mathbb{R}$ berechnet werden
+}
+
+\KRZ{Schnitt}{
+Gegeben sei eine Oberfläche $$S= \left\{(x,y,z(x,y)\mid (x,y)\in \mathbb{R}^2 \right\}$$
+und die Fragestellung: Wo schneidet die Tangentialebene bei $p_0 = (x_0 , y_0 , z_0 = z(x_0,y_0))$ die z-Achse $(0,0,z)$.
+
+\begin{enumerate}[leftmargin = *]
+\item Berechne $g(x_0, y_0) = z(x_0,y_0) + \mathcal{J}_z(x_0,y_0) \cdot \binom{x-x_0}{y-y_0} = z_0 +  \binom{\partial x (z(x,y))}{\partial y (z(x,y))} \cdot \binom{x-x_0}{y-y_0}$
+\item Berechne $z = g(0, 0) $ 
+\end{enumerate}
+
+}
+
+\NOTE{MC}{
+\begin{itemize}[leftmargin=*]
+\item $f$ ist stetig differenzierbar $\Leftrightarrow$ $\partial_i f$ existieren und sind stetig
+\item 
+\item $f$ ist stetig differenzierbar $\Rightarrow$ $f$ ist differenzierbar $\Rightarrow$ $f$ ist stetig $\Rightarrow$ $f$ ist integrierbar
+\item  Alle Richtungsableitungen von f existieren. $\Rightarrow$ impliziert gar nichts
+
+\item Für jedes $x_0 \in \mathbb{R}^n$ gibt es eine $m \times n$ Matrix $A$, sodass $f(x)=f\left(x_0\right)+A \cdot\left(x-x_0\right)+o\left(\left\|x-x_0\right\|\right)$. $\Leftrightarrow$   Definition von Differenzierbareit
+\end{itemize}
+
+}
+
+ \DEF{3.4.2}{$U \subseteq \mathbb{R}^{n}$ offen $f:U\to \mathbb{R}^{m}$ heisst \COL{differenzierbar } bei $x_{0}\in U$ falls es eine lineare Abbildung $A:\mathbb{R}^{n}\to \mathbb{R}^{m}$ sodass: $$\lim_{ x \to x_{0}, x \neq x_{0}} \frac{f(x)-f(x_{0})-A(x-x_{0})}{|| x-x_{0}||}=0$$}
+ 
+ 
+ \PROP{3.4.4}{Wir betrachten $U \subseteq \mathbb{R}^{n}, f: U \to \mathbb{R}^{m}$
+es folgt aus $f$ ist differenzierbar dass
+\begin{enumerate}[leftmargin=*]
+
+
+\item $f$ ist stetig
+\item $\partial_{x_{j}}f_{i}$ existieren für alle $i,j$
+\item Die Matrix von $\operatorname{df}\left(x_{0} \right)$ bezüglich den Standardbasen von  $\mathbb{R}^{n}$ und $\mathbb{R}^{m}$ ist gleich der Jakobimatrix $$\operatorname{df}\left(x_{0} \right)=\\ \mathcal{J}_f (x_0 )=\begin{pmatrix}
+\partial_{x_1}f_1(x_0) &  \ldots & \partial_{x_n}f_1(x_0)  \\
+ \vdots &  &  \vdots \\
+\partial_{x_1}f_m(x_0)  & \ldots & \partial_{x_n}f_m(x_0)  \\
+\end{pmatrix}$$
+\end{enumerate}}
+
+\PROP{3.4.6}{Sei $U \subseteq \mathbb{R}^{n}$ offen, $f,g: U \longrightarrow \mathbb{R}^{m}$ (stetig) differenzierbar. Dann gilt 
+\begin{enumerate}[leftmargin=*]
+
+
+\item $f+g$ (stetig) differenzierbar und $\operatorname{d}(f+g)(x_{0})=\operatorname{df}(x_{0})+ \operatorname{d}g(x_{0})$
+\item $m=1 \Rightarrow$ $f\cdot g$ (stetig) differenzierbar
+\item $m=1, g\neq 0$ $\frac{f}{g}$ (stetig) differenzierbar
+ \end{enumerate}}
+ 
+  \PROP{3.4.7}{Wir betrachten $U \subseteq \mathbb{R}^{n}, f: U \to \mathbb{R}^{m}$
+Falls $\partial_{x_{j}}f_{i}$ für alle $1\leq j\leq n$, $1\leq i \leq m$ existiert und stetig ist, dann ist $f$ differenzierbar. (Man sagt $f$ ist stetig differenzierbar)}
+
+
+
+\PROP{3.4.9}{$U \subseteq \mathbb{R}^{n}$ offen, $V \subseteq \mathbb{R}^{m}$ offen
+ $f: U \longrightarrow V, g: V \longrightarrow \mathbb{R}^{p}$ differenzierbar. Dann ist $g \circ f= g(f)$ differenzierbar  und
+ $$d(g\circ f)(x_{0})= dg(f(x_{0}))\circ df(x_{0})$$ Insbesondere erfüllen die Jacobimatrizen:
+  $$
+  \mathcal{J}_{g \circ f} (x_{0})=\mathcal{J}_{g} (f(x_{0})) \cdot \mathcal{J}_{f} (x_{0})
+  $$}
+  
+  
+  \NOTE{Multivariablen}{
+Für Ableitungen mit mehreren verschachtelten Funktionen immer \COL{Prop 3.4.9} verwenden und dann entsprechend umformen. 
+
+Es gilt:
+$$
+(g \circ f)^{\prime}(t)=\nabla g(f(t)) \cdot f^{\prime}(t) = \sum_{j=1}^m \frac{\partial g}{\partial y_j}\left(y_0\right) \frac{\partial f_j}{\partial t}\left(x_0\right)
+$$
+Wobei 
+
+
+ $y_0=f\left(x_0\right)$ und die Variablen in $\mathbf{R}^m$ sind $\left(y_1, \ldots, y_m\right)$  mit $f:\mathbb{R}^n \mapsto \mathbb{R}^m$ und $g: \mathbb{R}^m \mapsto \mathbb{R}^p$
+
+  
+  
+  }
+  
+  \DEF{3.4.11}{$U \subseteq \mathbb{R}^{n}$ offen, $f: U \to \mathbb{R}^{m}$ differenzierbar.
+ $x_{0} \in U$, $A = df(x_{0})$. Der \COL{Tangentialraum} des Graphen von $f$ bei $x_{0}$ ist der Graph von $g(x)=f(x_{0})+A(x-x_{0})$, also 
+ $$ \left\{ \left(y,g(x) \right) \mid x \in \mathbb{R}^{m} \right\} \subseteq \mathbb{R}^{n}\times \mathbb{R}^{m} $$}
+ 
+ 
+ \DEF{3.4.13}{ Sei $U \subseteq \mathbb{R}^{m}$ offen und $f: U \longrightarrow \mathbb{R}^{m}, v\in \mathbb{R}^{m}\setminus \left\{0 \right\}, x_{0}\in U$. Die \COL{Richtungsableitung} von $f$ in Richtung $v$ bei $x_{0}$:
+  \begin{align*} D_{v}f(x_{0}):= \mathcal{J}_{g} (0)\in \mathbb{R}^{m} \end{align*} 
+wobei  $g: \left\{ t \in \mathbb{R} \mid x_{0}+t_{v} \in U \right\} \subseteq \mathbb{R}$
+\begin{align*} g(t)=f(x_{0}+tv)\end{align*}  Es gilt  \begin{align*} \mathcal{J}_{g}=\left(\begin{array}{c}
+\partial_x g_1(0) \\
+\vdots \\
+\partial_x g_m(0)
+\end{array}\right) \end{align*} 
+Somit gilt
+
+$$
+D_{\mathbf{v}} f\left(\mathbf{x}_0\right)=\nabla f\left(\mathbf{x}_0\right) \cdot \mathbf{v} = \nabla f\left(\mathbf{x}_0\right) \cdot \frac{\mathbf{v}}{\|\mathbf{v}\|_2}
+$$
+
+} 
+
+
+\PROP{3.4.15}{$u \subseteq \mathbb{R}^n$ offen, $f: u \rightarrow \mathbb{R}^m$ stetig differenzierbar $\Rightarrow$ Für alle $x_0 \in u, v \in \mathbb{R}^n \backslash\{0\}$ gilt $\operatorname{D}_v f\left(x_0\right)=d f\left(x_0\right)(v)$ lnsbesondere$$
+D_{\lambda_1 v_1+\lambda_2 V_2} f\left(x_0\right)=\lambda_1 D_{V_1} f\left(x_0\right)+\lambda_2 D_{V_2} f\left(x_0\right)
+$$}
+
+\KOR{}{$H_{f}(x_{0})$ ist symmetrisch}
+
+\KOR{}{Ist $f$  $C^k$, so lassen sich $\partial_{x_{j_1}}, \ldots, \partial_{x_{j_k}}$ beliebig vertauschen}
+
+
+
+\mysubsection{\centering Höhere Ableitungen}
+\NOTE{MC}{
+\begin{itemize}[leftmargin=*]
+\item Eine Funktion $f:\mathbb{R}^{n} \mapsto \mathbb{R}^{m}$ hat $m \cdot n^i$ , $i$-te partielle Ableitungen
+\item Eine Funktion $f:\mathbb{R}^{n} \mapsto \mathbb{R}^{m}$ hat $m \cdot \binom{n}{i}$ , $i$-te unterschiedliche partielle Ableitungen. (Da Reihenfolge gemäss \COL{Prop 3.5.4} keine Rolle spielt.)
+\end{itemize}
+}
+
+\DEF{2.5.1}{
+Sei $u \subseteq \mathbb{R}^n \text { offen }$ 
+\begin{enumerate}[leftmargin=*]
+\item $C^0\left(u, \mathbb{R}^m\right):=\left\{\text { stetige Funktionen } f: u \rightarrow \mathbb{R}^m\right\}$
+\item $C^{k}\left(u, \mathbb{R}^m\right):=\left\{f \text { sodass alle }  \partial_{x_{j_1}} \cdots \partial_{x_{j k}} f_i \text { existieren \& stetig}\right\}$
+\item $C^{\infty}\left(u, \mathbb{R}^m\right):=\bigcap_{k=0}^{\infty} C^k\left(u, \mathbb{R}^m\right)$ (glatte Funktionen)
+\end{enumerate}
+}
+
+
+\PROP{3.5.4}{$u \subseteq \mathbb{R}^n$ offen, $f \in C^2\left(u, \mathbb{R}^m\right)$. Dann gilt$$
+\partial_{x_j} \partial_{x_k} f=\partial_{x_k} \partial_{x_j} f
+$$ Gilt auch analog für alle $c>2$.}
+
+\DEF{3.5.9}{$u \subseteq \mathbb{R}^n \text { offen, } f: u \rightarrow \mathbb{R} c^2, x_0 \in u$ Die \COL{Hessische} von $f$ bei $x_0$ ist die $n \times n$-Matrix $$
+H_f\left(x_0\right)=\left(\begin{array}{cccc}\frac{\partial^2 f}{\partial x_1^2}\left(\mathbf{x}_0\right) &\ldots & \frac{\partial^2 f}{\partial x_1 \partial x_n}\left(\mathbf{x}_0\right)  \\ \vdots &  \ddots & \vdots \\ \frac{\partial^2 f}{\partial x_n \partial x_1}\left(\mathbf{x}_0\right) &  \ldots & \frac{\partial^2 f}{\partial x_n^2}\left(\mathbf{x}_0\right)\end{array}\right)$$
+
+
+}
+
+
+\mysubsection{\centering Taylorpolynome}
+
+\KRZ{Mehrdimensionale TP}{
+Berechne das TP vom Grad $k$
+\begin{enumerate}[leftmargin=*]
+\item Setze variablen in TP ein.
+\item Für einsetzen: nutze \COL{RC TP einsetzen}.
+\item Andere Operationen direkt anwenden.
+\item Sobald ein Monom über Grad $k$ hat, einfach weglassen. 
+\item Füge $\left\| (x_1 ,x_2 , ...) \right\|^k$ hinzu. 
+\end{enumerate}
+Alternativ: Berechne TP direkt mit \COL{Def 3.7.1}
+}
+
+\KRZ{TP einsetzen}{
+Seien $f$ zwei $g$, Funktionen. Wir berechnen $f(g(x_1,x_2,...))$. 
+Falls $f(0)=g(0,\ldots ,0)$ kann man direkt einsetzen. Ansonsten
+\begin{enumerate}[leftmargin =*]
+\item Sei Entwicklungspunkt von $g(0,0,\ldots)= b$
+\item Definiere $\tilde{g}= g - b$
+\item Setze $\tilde{f}(\tilde{g})$ und gleiche aus, sodass $\tilde{f(\tilde{g})}=f(g)$.
+\end{enumerate}
+Ansatz:
+\begin{itemize}[leftmargin = *]
+\item $e^{g(x_1,x_2\ldots)} \rightarrow e^{b}\cdot e^{g(x_1,x_2\ldots)-b}$
+\end{itemize}
+
+
+}
+
+\KRZ{Hessische durch TP}{
+Gesucht sei die Hessische für eine Funktion $f$ an einem Punkt $(x_0,y_0)$ wobei das zugehörige TP den Entwicklungspunkt $(x_0,y_0)$ haben muss.
+\begin{enumerate}[leftmargin=*]
+\item Berechne TP vom Grad 2
+\item Leite TP partiel ab und setze in Matrix ein. Es gilt $\partial_{xx}f(x_0,y_0) = \partial_{xx} T_{3,f}....$
+
+\end{enumerate}
+
+}
+
+\DEF{3.7.1}{$f \in C^k(U, \mathbb{R})$. Dann ist das $k$-te Taylorpolynom$
+ T_k f(x)=
+ \sum_{\substack{m_1, \cdots, m_n \geqslant 0 \\
+m_1+\ldots+m_n \leq k}} \underbrace{ \frac{1}{m_{1} ! \cdots m_{n} !} \cdot \partial_1^{m_1} \cdots \partial_n^{m_n} f\left(x_0\right) }_{\text{Konstante}}\cdot y_1^{m_1} \cdot \ldots \cdot y_n^{m_n}
+$}
+
+\NOTE{LandauSymbol}{
+$U \subseteq \mathbb{R}^n, g: U \rightarrow \mathbb{R}, x_0 \in U$. Dann ist $\sigma(g)$ die Menge der Funktionen $f: u \rightarrow \mathbb{R}$ mit $\lim _{\substack{x \rightarrow x_0 \\ x \neq x_0}}\left|\frac{f(x)}{g(x)}\right|=0$
+Rechenregeln
+\begin{itemize}[leftmargin = *]
+\item $ \sigma\left(x^a\right)+\sigma\left(x^b\right)=\sigma\left(x^{\min (a, b)}\right)$
+\item $\sigma\left(x^a\right) \cdot \sigma\left(x^b\right)=\sigma\left(x^{a+b}\right)$
+\item $\sigma\left(x^b\right)=\sigma\left(x^{a+b}\right)$
+\item $P=\sigma\left(\|x\|^k\right) \quad  \text{ falls } \operatorname{deg} P>k$
+\item $\sigma(P)=\sigma\left(\|x\|^k\right) \text{ falls } \operatorname{deg} P \geqslant k$
+\item $P \cdot \sigma\left(\|x\|^k\right)=\sigma\left(\|x\|^{k+\operatorname{deg} P}\right)$
+\end{itemize}
+
+
+}
+\NOTE{TP}{
+Sei $\vec{x}=(x-x_0)$ und $\vec{y}=(y-y_0)$
+\begin{align*}
+&T_3 f(x, y)=  f\left(x_0, y_0\right)\\
+&+\frac{\partial f}{\partial x}\left(x_0, y_0\right)\vec{x}+\frac{\partial f}{\partial y}\left(x_0, y_0\right)\vec{y} \\
+& +\frac{1}{2}\left[\frac{\partial^2 f}{\partial x^2}\left(x_0, y_0\right)\vec{x}^2+2 \frac{\partial^2 f}{\partial x \partial y}\left(x_0, y_0\right)\vec{x}\vec{y}\right. \\
+& \left.+\frac{\partial^2 f}{\partial y^2}\left(x_0, y_0\right)\vec{y}^2\right] \\
+& +\frac{1}{6}\left[\frac{\partial^3 f}{\partial x^3}\left(x_0, y_0\right)\vec{x}^3+3 \frac{\partial^3 f}{\partial x^2 \partial y}\left(x_0, y_0\right)\vec{x}^2\vec{y}\right. \\
+& \left.+3 \frac{\partial^3 f}{\partial x \partial y^2}\left(x_0, y_0\right)\vec{x}\vec{y}^2+\frac{\partial^3 f}{\partial y^3}\left(x_0, y_0\right)\vec{y}^3\right]
+\end{align*}
+}
+
+
+\SA{3.7.3}{$f \in C^k(u, \mathbb{R})$. Dann ist $$
+f(x)=T_{k,f}\left(x\right)+\sigma\left(\|x- x_{0} \|^k\right)
+$$}
+\NOTE{Rechenregeln}{ Es gilt
+\begin{itemize}[leftmargin=*]
+\item $\lambda \sigma(h)+\mu \sigma(h)=\sigma(h)$
+\item $g \cdot \sigma(h)=\sigma(g) \cdot \sigma(h)=\sigma(g h)$
+\item $\sigma(\sigma(h))=\sigma(h)$
+\item $\sigma\left(\|x-y\|^d\right)=\sigma\left(\|x-y\|^e\right)$ fur $e \leqslant d$
+\end{itemize}
+
+}
+
+
+\mysubsection{Kritische Punkte}
+
+\NOTE{MC}{
+
+\begin{itemize}[leftmargin=*]
+\item $H_f\left(x_0\right)$ positiv definit $\Rightarrow x_0$ lokales Minimum.
+\item $H_f\left(x_0\right)$ negativ definit $\Rightarrow x_0$ lokales Maximum
+\item $H_f\left(x_0\right)$ indefinit $\Rightarrow x_0$ Sattelpunkt, kein Wendepunkt, kein Extrempunkt
+ \item $H_f\left(x_0\right)$ positiv semi-definit $\Rightarrow x_0$ \textbf{kann} lokales Minimum sein.
+\item $H_f\left(x_0\right)$ negativ semi-definit $\Rightarrow x_0$  \textbf{kann} lokales Maximum sein.
+\item $tr(A)=$ Summe der Eigenwerte
+\item $\det(A)=$ Produkt der Eigenwerte
+\item $H_{f}(x_0)$ hat positive Eigenwerte $\Rightarrow$ $f$ hat kein lokales Maxima bei $x_{0}$
+\item $H_{f}(x_0)$ hat negative Eigenwerte $\Rightarrow$ $f$  hat kein lokales Minima bei $x_{0}$
+\item Ein kritischer Punkt ist entweder ein maximum, minimum oder ein Sattelpunkt. Gilt auch für degenerierte Punkte. 
+
+
+
+
+\end{itemize}
+
+
+}
+
+\KRZ{Kritische Punkte finden}{
+Sei $f:\mathbb{R}^n \to \mathbb{R}$.
+\begin{enumerate}[leftmargin=*]
+
+\item Falls $\exist i \in [0,n]\lim_{x_i \to \pm \infty} f( x_0,x_1, \ldots) = \pm \infty$ hat es entweder kein globales minimum ($- \infty$) oder kein globales maximum ($+ \infty$). Gemäss \COL{TRM 3.2.15} gibt es für die anderen Fälle ein Extrempunkt.
+\item Berechne Grad $\nabla_f(x_i)=0$ und finde potentielle Kandidaten. (Nach einer Variabel umformen und in zweite Bedingungen einsetzen)\hl{Falls $x^2=c\Rightarrow x = \pm c$ und dann alle möglichen Kombinationen bilden}
+\item Berechne Hessische $\mathcal{H}_f$ und bestimme Definitheit von $\mathcal{H}_f(x_i)$
+\item Falls Funktion beschränkt: Überprüfe Ränder durch berechnen der Limites!
+\end{enumerate}
+}
+
+\KRZ{Kritische Punkte begrenzt}{
+Sei $f$ begrenzt auf ein Rechteck $U:=\left\{(x, y) \in \mathbb{R}^2 \mid a \leq b \leq 2,a \leq y \leq b\right\}$. 
+\begin{enumerate}[leftmargin = *]
+\item Bestimme kritische Punkte im Innern von $U$ mit \COL{RC Kritische Punkte finden} 
+\item Bestimme kritische Punkte am Rand von $U$ durch die Analyse von $\frac{d f(a,y)}{dy}, \frac{d f(b,y)}{dy},\frac{d f(x,a)}{dx}$ und $\frac{d f(x,b)}{dx}$
+\item Überprüfe Eckpunkte separat: $(a,a),(a,b),(b,a),(b,b)$
+\item Setze alle Punkte ein und bestimme globales max/min
+\end{enumerate}
+Analog gilt für kritische Punkte auf einem Kreis
+$g(\phi)=(\cos \phi, \sin \phi)$ einsetzen $f(\cos \phi,\sin \phi)$ und dann nach $\phi$ ableiten und Extremstellen finden.
+
+}
+
+\KRZ{Definiheit für $2\times 2$ Matrizen}{
+Für eine $A\in \mathbb{R}^{2,2} =\mathcal{H}_f$ gilt:
+\begin{enumerate}[leftmargin=*]
+\item Bestimme $\det(A)$
+\item Bestimme $\operatorname{tr}(A)$
+\end{enumerate}
+Folge folgendes Schema
+\begin{itemize}[leftmargin=*]
+\item $\det(A)<0 \Rightarrow A \text{ indefinit}$
+\item $\det(A)=0$
+\begin{itemize}[leftmargin=*]
+\item $\operatorname{tr}(A)<0\Rightarrow A \text{ negativ semi-definit}$
+\item $\operatorname{tr}(A)=0 \Rightarrow A \text{ Nullmatrix}$
+\item $\operatorname{tr}(A)>0\Rightarrow A \text{ positiv definit}$
+\end{itemize}
+\item $\det(A)>0$
+\begin{itemize}[leftmargin=*]
+\item $\operatorname{tr}(A)<0 \Rightarrow A \text{ negativ definit}$
+\item $\operatorname{tr}(A)>0  \Rightarrow A \text{ positiv definit}$
+\end{itemize}
+\end{itemize}
+}
+
+\KRZ{Eigenwerte Finden}{
+\begin{itemize}
+\item[1] finde char. Polynom $\mathcal{X}_A(\lambda)= det(A-\lambda I) $
+\item[2] Finde Nullstellen $\mathcal{X}_A$ 
+\end{itemize}
+}
+
+\NOTE{Definitheit mit Eigenwerte}{
+Aus Hermitische $\mathcal{H}_f$ folgt:
+\begin{itemize}[leftmargin=*]
+\item  alle Eigenwerte sind positiv [negativ] $\Leftrightarrow$ Matrix ist positiv [negativ] definit.
+\item Falls positive und negative Eigenwerte $\Leftrightarrow$  Matrix ist indefinit
+\item Für Diagonal- und Dreiecksmatrizen sind Eigenwerte die Diagonaleinträge! 
+\end{itemize}
+
+
+ }
+
+
+
+\NOTE{Definitheit mit Sylvester}{
+Alle determinanten von oberen linken submatrizen sind strikt positiv $\Leftrightarrow$ Matrix ist positiv definit. \\
+Alle determinanten von oberen linken submatrizen sind abwechslungsweise positiv und negativ (startet mit positiv)$\Leftrightarrow$ Matrix ist negativ definit.
+
+}
+
+
+\DEF{}{$U \subseteq \mathbb{R}^M, f: U \rightarrow \mathbb{R}$. Dann heisst $x_0 \in U \ldots$
+
+\begin{itemize}[leftmargin=*]
+
+ \item \COL{lokales Minimum} : Falls es in $\varepsilon>0$ gibt mit $\left\|x-x_0\right\|<\varepsilon, x \in U \Rightarrow f\left(x_0\right) \leqslant f(x)$
+ \item \COL{lokales Maximum} : Falls es in $\varepsilon>0$ gibt mit $\left\|x-x_0\right\|<\varepsilon, x \in U \Rightarrow f\left(x_0\right) \geqslant f(x)$
+\item  \COL{lokales Extremum} : falls es ein lokales Minimum oder Maximum gibt
+\item \COL{globaler Extrempunkt} : falls die Bedingung für alle $x \in U$ gelten
+\end{itemize}
+
+}
+\DEF{3.8.2}{$U \subseteq \mathbb{R}^n$ offen, $\quad f: u \rightarrow \mathbb{R}$ differenzierbar. $x_0 \in U$ heisst kritischer Punkt falls $\nabla f\left(x_0\right)=0$.}
+
+\PROP{3.8.1}{$U \subseteq \mathbb{R}^n$ offen, $f: U \rightarrow \mathbb{R}$ differenzierbar.
+$x_0 \in U$ lokales Extremum $\Rightarrow x_0$ kritischer Punkt}
+
+
+
+
+
+\DEF{}{Def Eine $n \times m$ Matrix A heisst...
+
+\begin{itemize}[leftmargin=*]
+\item \COL{positiv definit} $\Leftrightarrow$ für alle $y \neq 0$ gilt: $y^{\top} A y>0$
+\item \COL{negativ definit} $\Leftrightarrow$für alle $y \neq 0$ gilt: $y^{\top} A y<0$
+ \item \COL{indefinit} falls es $y, z$ gibt mit $y^{\top} A y<0, z^{\top} A z>0$.
+ \end{itemize}}
+ 
+ \SA{3.8.7}{$u \subseteq \mathbb{R}^m$ offen, $f: u \rightarrow \mathbb{R} C^2$, $x_0$ Kritischer Punkt. Dann:
+ \begin{itemize}[leftmargin=*]
+ 
+
+\item $H_f\left(x_0\right)$ positiv definit $\Rightarrow x_0$ lokales Minimum.
+\item $H_f\left(x_0\right)$ negativ definit $\Rightarrow x_0$ lokales Maximum
+\item $H_f\left(x_0\right)$ indefinit $\Rightarrow x_0$ kein lokales Extremum (Sattelpunkt, jedoch kein Wendepunkt)
+ \end{itemize}
+ 
+
+}
+\DEF{}{Ein kritischer Punkt $x_0$ von $f$ heisst \COL{degeneriert} falls $\operatorname{det} H_f\left(x_0\right)=0$}
+
+
+
+
+\mysubsection{Umkehrabbildung}
+
+\NOTE{MC}{
+\begin{itemize}[leftmargin = *]
+\item Falls in \COL{S 3.10.2} $n=1$ und $\forall x \in U, f'(x)>0$ oder $\forall x \in U, f'(x)<0$ $\Rightarrow$  $f$ ist strikt monoton wachsend/fallend auf $U \Rightarrow$ $f$ ist bijektiv $\Rightarrow$ globale Umkehrfunktion existiert.
+\item Falls $n > 1$:  $\forall x \in U \operatorname{det}\left(J_f\left(x\right)\right)$ positiv/negativ definit $\Rightarrow$ globale Umkehrfunktion existiert.
+
+\end{itemize}
+
+}
+
+\DEF{3.10.1}{ Sei $U \subseteq \mathbb{R}^n$ offen, $f: u \rightarrow \mathbb{R}^n$ differenzierbar. 
+ $f$ heisst \COL{lokal invertierbar}  bei $x_0 \in U$ falls eine offene Menge $B$ mit $x_0 \in B$ existiert, für die gilt: $f(B) \subseteq \mathbb{R}^n$ ist offen, und es gibt ein diffbares $g: f(B) \rightarrow B$ Sodass $$f \circ g=id_{f(B)}, \quad g \circ f=i d_B$$}
+ 
+ 
+ \SA{3.10.2}{Von der Umkehrabbildung $U \subseteq \mathbb{R}^n$ offen, $f: U \rightarrow \mathbb{R}^{n}$ differenzierbar. 
+Falls $\operatorname{det}\left(J_f\left(x_0\right)\right) \neq 0$, dann ist $f$ \hl{lokal} (nicht global, keine Aussagen machbar über Surjektion/Injektion) invertierbar bei $x_0$.
+  Sei $g$ die lokale Umkehrfunktion. Dann ist
+ $$
+ J_g\left(f\left(x_0\right)\right)=J_f\left(x_0\right)^{-1}
+ $$
+ 
+ Falls $f\in  C^k$ ist, ist auch $g \in C^k$.}
+
+\NOTE{Inverse $2 \times 2$ Matrix}{
+$$
+\left[\begin{array}{cc}
+a & b \\
+c & d
+\end{array}\right]^{-1}=\frac{1}{\det }\left[\begin{array}{cc}
+d & -b \\
+-c & a
+\end{array}\right]
+$$
+Wobei 
+$\det  =\mathrm{ad}-\mathrm{bc}$
+
+}
+
+\NOTE{$\det$ Matrix}{
+$
+|A|=\sum_{j=1}^n a_{i j} \cdot(-1)^{i+j} \cdot D_{i j}=\sum_{i=1}^n a_{i j} \cdot(-1)^{i+j} \cdot D_{i j}
+$
+$D_{i j}$ ist die Unterdeterminante, die man erhält, wenn man die $i$-te Zeile und die $j$-te Spalte streicht. Für die $3\times 3$ Matrix ($abc \rightarrow$, $adg\downarrow$) 
+
+ist $$\det = a \cdot e \cdot i+b \cdot f \cdot g+c \cdot d \cdot h-g \cdot e \cdot c-h \cdot f \cdot a-i \cdot d \cdot b$$
+
+}
+
+}

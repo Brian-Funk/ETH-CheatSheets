@@ -1,0 +1,119 @@
+\documentclass[7pt,landscape, margin = 0.1mm]{article}
+\usepackage{amssymb,amsmath,amsthm,amsfonts}
+\usepackage{multicol,multirow}
+\usepackage{graphicx}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{titlesec}
+% Tables
+\usepackage{tabularx, multirow}
+\usepackage{booktabs}
+\renewcommand*{\arraystretch}{2}
+\usepackage{float}
+\usepackage{calc}
+\usepackage{soul}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{ifthen}
+\usepackage{titlesec}
+\usepackage[landscape]{geometry}
+\usepackage{enumitem}
+\usepackage{graphicx}
+\usepackage{syntonly}
+\setitemize{noitemsep,topsep=0pt,parsep=0pt,partopsep=0pt}
+\usepackage[colorlinks=true,citecolor=blue,linkcolor=blue]{hyperref}
+\usepackage{tikz}
+\def\cm{\tikz\fill[scale=0.4](0,.35) -- (.25,0) -- (1,.7) -- (.25,.15) -- cycle;} 
+\ifthenelse{\lengthtest { \paperwidth = 11in}}
+    { \geometry{top=.1in,left=.1in,right=.1in,bottom=.1in} }
+	{\ifthenelse{ \lengthtest{ \paperwidth = 297mm}}
+		{\geometry{top=1mm,left=1mm,right=1mm,bottom=1mm} }
+		{\geometry{top=1mm,left=1mm,right=1mm,bottom=1mm} }
+	}
+
+\pagestyle{empty}
+
+\makeatletter
+
+
+
+\newcommand{\titellinie}{\rule{1.\linewidth}{0.75pt}}
+
+\titleformat{\subsection}
+  {\normalfont\fontsize{10}{10}\bfseries}{\thesection}{1em}{}
+
+\newcommand*{\mysection}[2][black]{\vskip 0pt \titellinie\vspace{-20pt}\section{#2}\vspace{-14pt}\titellinie \colorlet{chaptercolor}{#1}}
+
+\newcommand*{\mysubsection}[1]{\vspace{-2mm}\color{chaptercolor}\subsection{ #1 }
+\vspace{-1mm}\hrule\vspace{1.5mm}\color{black}
+\vspace{2mm}}
+
+\newcommand{\COL}[1]{ \color{chaptercolor} \textbf{#1 }\color{black}}
+
+
+\newcommand{\KRZ}[2]{\vspace{1mm} \hline \vspace{1mm} \color{chaptercolor}{\textbf{RC #1}}:\color{black} \   \hspace{0.2cm}\vspace{1mm}   {\begin{minipage}{20em}
+#2 \end{minipage}} \vspace{1mm}  \hline \vspace{1mm}  \\}
+
+
+\newcommand{\DEF}[2]{\color{chaptercolor}\textbf{{Def #1}}:\color{black}    \hspace{0.2cm} #2 \\}
+
+\newcommand{\NOTE}[2]{\color{chaptercolor}\textbf{{Note #1}}:\color{black}    \hspace{0.2cm} #2 \\}
+
+\newcommand{\COR}[2]{\color{chaptercolor}\textbf{{Cor #1}}:\color{black}    \hspace{0.2cm} #2 \\}
+
+\newcommand{\LINE}{\hspace{0.2cm} \hline \hspace{0.2cm}}
+
+\newcommand{\LEM}[2]{\color{chaptercolor}\textbf{{Lem #1}}:\color{black}    \hspace{0.2cm} #2 \\}
+
+
+\newcommand{\hlc}[2][yellow]{{%
+    \colorlet{foo}{#1}%
+    \sethlcolor{foo}\hl{#2}}%
+}
+
+\newcommand{\THE}[2]{\color{chaptercolor}\textbf{{Trm #1}}:\color{black}    \hspace{0.2cm} #2 \\}
+\newcommand{\SA}[2]{\color{chaptercolor}\textbf{{S #1}}:\color{black}    \hspace{0.2cm} #2 \\}
+
+		\newcommand{\COR}[2]{\color{chaptercolor}\textbf{{Cor #1}}:\color{black}    \hspace{0.2cm} #2 \\}
+
+\newcommand{\PROP}[2]{\color{chaptercolor}\textbf{{Prop #1}}:\color{black}    \hspace{0.2cm} #2 \\}
+\newcommand{\AX}[2]{\color{chaptercolor}\textbf{{Axm #1}}:\color{black}    \hspace{0.2cm} #2 \\}
+
+
+
+\makeatother
+\setcounter{secnumdepth}{0}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt plus 0.5ex}
+\setlength{\marginparwidth}{0pt}
+\setlength{\marginparsep}{0pt}
+% -----------------------------------------------------------------------
+\begin{document}
+\syntaxonly
+\centering
+
+\scriptsize
+
+\begin{center}
+     \Large{\textbf{Cheat Sheet}: Comp Sc BSc, Analysis 2 - Surname Name , XX.YY.ZZZZ - \textbf{AA-BBB-CC-DDD}} \\
+\end{center}
+\begin{multicols}{4}
+\setlength{\premulticols}{0.5pt}
+\setlength{\postmulticols}{0.5pt}
+\setlength{\multicolsep}{0.5pt}
+\setlength{\columnsep}{0.2pt}
+\setlength{\columnseprule}{0.4pt}
+
+\begin{flushleft}
+
+\input{Sections/Differential}
+\input{Sections/ODE}
+\input{Sections/Integral}
+
+\input{Sections/Anhang}
+
+\end{flushleft}
+\end{multicols}
+\newpage
+\begin{multicols}{2}
+\input{Sections/Anhang2}
+\end{multicols}
+\end{document}

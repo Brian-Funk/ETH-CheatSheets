@@ -1,0 +1,88 @@
+\mysection[black]{2. x86lite and LLVM}
+
+\mysubsection{2.1 x86lite}
+
+
+
+
+\BDEF{Calling Convention}{
+\textbf{Args 1-6} in \texttt{rdi rsi rdx rcx r8 r9}; args $\ge7$ on stack (pushq in rev. order);
+\textbf{return} in \texttt{rax};
+\textbf{caller-saves} \texttt{rax rcx rdx rsi rdi r8-r11};
+\textbf{callee-saves} \texttt{rbx rbp (top) r12-r15}
+}
+\textbf{Instr.}: INSTR SRC DEST, reg. with \%, imm. with \$, $(A)$ mem. at the address stored in $A$ \\
+\textbf{Sfx.}:b=1,l=2,w=4,q=8 bytes\\
+\textbf{Args.}: for $n\ge 7:\text{addr}=((n-7)+2)\cdot 8 + \%\text{rbp}$
+\begin{multicols}{4}
+\textbf{Prologue}
+\begin{lstlisting}
+ pushq %rbp
+ movq %rsp,%rbp
+ subq $x,%rsp
+\end{lstlisting}
+\columnbreak
+\textbf{Epilogue}
+\begin{lstlisting}
+ addq $x,%rsp
+ popq %rbp
+ retq
+\end{lstlisting}
+\columnbreak
+\textbf{Push}\\
+\begin{lstlisting}
+pushq %X:
+ rsp <- rsp-8
+ Mem[rsp] <- X
+\end{lstlisting}
+\columnbreak
+\textbf{Pop}\\
+\begin{lstlisting}
+popq %X:
+ X <- Mem[rsp]
+ rsp <- rsp+8 
+\end{lstlisting}
+\end{multicols}
+\textbf{Flg}: OF = under-/overflow, SF = sign (1=neg.),ZF=0
+\textbf{CC}: $e=\text{ZF}$,$ne=\neg\text{ZF}$, $g=\neg \text{ZF}\wedge \text{SF}{=}\text{OF}$,$l=\text{SF}\neq \text{OF}$,$ge=\text{SF}=\text{OF}$,$le=\text{ZF}\vee\text{SF} \neq \text{OF}$
+\textbf{CC (Signed) x86}: \texttt{cmpq SRC, DST} then: \texttt{je / jz (DST == SRC),jne / jnz (DST != SRC),jl[e] (DST <[=]  SRC),jg[e] (DST >[=]  SRC)}
+\textbf{Unsigned}: \texttt{je/jz (DST == SRC),jne/jnz (DST != SRC),jb[e] (DST <[=] SRC),ja[e] (DST >[=] SRC)}\\
+\textbf{LLVM}: 
+\texttt{\%c = icmp sgt i64 \%a \%b}. \texttt{\#c} is 1 iff \texttt{\%a<\%b}. More: \texttt{eq, ne, sgt, sge, slt, sle} 
+
+
+\mysubsection{2.2 LLVM}
+\textbf{Prefix}: local (\texttt{\%}) / global (\texttt{@}) identifier\\
+\textbf{Phi-Nodes}: \lstinline[language=llvm]{%val = phi <ty> [%v1, %l1], [%v2, %l2]}
+, select based most recent block visited\\ 
+\textbf{GEP}:  \lstinline[language=llvm]{<res> = getelementptr <ty>, <ty>* <ptr>, <idxs>...},
+purely arithmetic, if nested pointers \lstinline[language=llvm]{GEP(load(GEP(p*)))} \\
+
+
+\textbf{Alloca \& Stack Storage:}  Allocates stack space, returns pointer, is freed on function return.
+
+\textbf{Memory}: $8$(long), $4$(int) $\cdot \# $ vars. needed after func. call.
+\begin{tabular}{@{}l l l@{}}
+\toprule
+\textbf{LLVM} & \textbf{x86 Equivalent} \\
+\midrule
+\texttt{sub i64 O1, O2} \textcolor{gray}{= o1 - o2} & \texttt{sub1 SRC, DST} \textcolor{gray}{= dst - src} \\
+\texttt{\%L = alloca <ty>}  & \texttt{subq sizeof(T), \%rsp} \\
+\texttt{\%L = load <ty>* P} & \texttt{movq (SRC), DST} \\
+\texttt{store <ty> V, <ty>* P}  & \texttt{movq SRC, (DST)} \\
+\midrule
+\texttt{call <ty> F(...)} & \texttt{callq F} \\
+\texttt{ret void / <ty>}  & \texttt{retq} \\
+\texttt{br label \%L} & \texttt{jmp \%L} \\
+\texttt{br i1 C, \%L1, \%L2} & \texttt{jne \%L1; jmp \%L2} \\
+\midrule
+\texttt{icmp <cond> ...} & \texttt{cmpq} + \texttt{jcc} \\
+\texttt{getelementptr} & \texttt{leaq} (often) \\
+\bottomrule
+\end{tabular}
+
+
+
+
+
+

@@ -1,0 +1,37 @@
+\mysection[black]{1. OCAML}
+
+
+\begin{itemize} [leftmargin = *,noitemsep]
+    \item  F' are right-associative: $t_{1} \rightarrow t_{2}  \rightarrow t_3 \equiv  t_1  \rightarrow (t_2  \rightarrow t_3)$
+    \item F' application is left-associative: $f\,x\,y \equiv (fx)y$
+\end{itemize}
+\begin{multicols}{2}
+\textbf{Head-Recursive}
+\begin{lstlisting}
+let rec sum xs =
+  match xs with
+  | [] -> 0
+  | x :: xs' -> x + sum xs'
+\end{lstlisting}
+\columnbreak
+\textbf{Tail-Recursive}
+\begin{lstlisting}
+let sum xs =
+  let rec aux acc xs =
+    match xs with
+    | [] -> acc
+    | x :: xs' -> aux (acc + x) xs'
+  in
+  aux 0 xs
+\end{lstlisting}
+\end{multicols}
+
+
+
+
+
+
+
+
+
+

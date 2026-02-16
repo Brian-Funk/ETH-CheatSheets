@@ -1,0 +1,101 @@
+\mysection[black]{6. MC}
+
+
+\scriptsize
+\hspace{3mm}
+
+
+
+{\normalsize\textbf{x86/LLVM}}
+
+\textbf{Which of the following statements are correct about x86?}
+\begin{itemize}
+
+\item[\textcolor{red}{W}] Every x86 instruction pushes its result onto the stack.
+\item[\textcolor{green}{C}] The operand of an x86 instruction can be a register, a machine address, a literal,or a label.
+\item[\textcolor{red}{W}] x86 instructions store intermediate results into the heap.
+\item[\textcolor{red}{W}] x86 instructions can only access the heap via the stack.
+\end{itemize}
+
+
+\textbf{Which of the following statements is wrong about the X86-64 System V ABI calling convention?}
+\begin{itemize}
+
+\item[\textcolor{green}{C}] Integer return values of functions are stored into the \%rax register
+\item[\textcolor{red}{W}] The callee sets up its stack frame by updating the location where \%rsp and \%rbp point to.
+\item[\textcolor{green}{C}] Every argument of a callee function is stored into registers by the caller
+\item[\textcolor{green}{C}] The callee function is responsible for destroying its stack frame
+\end{itemize}
+
+
+
+\textbf{What’s the semantics of movq (\%rsi), \%rdi in x86?}
+\begin{itemize}
+\item[\textcolor{green}{C}] Interprets the contents of \%rsi as an address, and then copies the contents ofthis address to register \%rdi. 
+
+\end{itemize}
+
+
+
+\textbf{What is/are the purpose(s) of using LLVM IR in a compiler middle-end ratherthan x86 assembly or C code?}
+\begin{itemize}
+
+\item[\textcolor{green}{C}] Multiple compiler back-ends (x86, ARM, RISC-V, etc) can use the same compilermiddle-end.
+\item[\textcolor{red}{W}] LLVM IR does not encode control-flow information
+\item[\textcolor{green}{C}] Multiple compiler front-ends (source languages) can use the same middle-end.
+\item[\textcolor{green}{C}] Assembly or C code are more difficult to analyze and optimize.
+\end{itemize}
+
+
+\textbf{Which of the following statement(s) is/are correct about LLVM IR?}
+\begin{itemize}
+\item[\textcolor{red}{W}] Instructions are not typed.
+\item[\textcolor{red}{W}] Basic blocks can contain multiple control-flow instructions.
+\item[\textcolor{green}{C}] Only the last instruction of a basic block is called the terminator.
+\item[\textcolor{green}{C}] Local variables must satisfy the single static assignment invariant.
+\end{itemize}
+
+
+\textbf{Which of the following statement(s) is/are correct about the control-flow graph in LLVM IR?}
+\begin{itemize}
+
+\item[\textcolor{green}{C}] Nodes are basic blocks, and basic blocks contain instructions.
+\item[\textcolor{green}{C}] An edge in control-flow graph represents a conditional/unconditional jump froma source block to a target block.
+\item[\textcolor{green}{C}] Basic blocks contain no interior label used as a jump target.
+\item[\textcolor{green}{C}] Basic blocks must end with a control-flow instruction.
+\end{itemize}
+
+
+
+\textbf{Which of the following statement(s) is/are correct about manipulating pointersin LLVM IR}
+\begin{itemize}
+
+\item[\textcolor{green}{C}] \texttt{getelementptr} does not access memory.
+\item[\textcolor{red}{W}] \texttt{getelementptr} traverses the links of a data structure to find the target object.
+\item[\textcolor{red}{W}] \texttt{getelementptr} uses only constant indices to compute offsets.
+\item[\textcolor{green}{C}] Returning a big (more than 64 bytes) structure object from a function can beachieved by passing a pointer argument allocated by the caller.
+\end{itemize}
+
+
+
+\textbf{Which of the following statement(s) is/are correct about manipulating pointersin LLVM IR}
+\begin{itemize}
+\item[\textcolor{green}{C}] Arguments \& return values are handled according to the calling conventions
+\item[\textcolor{green}{C}] \texttt{getelementptr} is transformed into the form of base address + offset
+\item[\textcolor{red}{W}] Array access indices are computed at compile time.
+\item[\textcolor{green}{C}] Basic blocks are connected via conditional, unconditional, and implicit (fallthrough) jumps.
+\end{itemize}
+
+
+
+\textbf{Which of the following optimization(s) can be done at the LLVM-IR level?}
+\begin{itemize}
+
+\item[\textcolor{green}{C}]  Constant propagation
+\item[\textcolor{red}{W}]  Dead code elimination
+\item[\textcolor{green}{C}] Branch prediction
+\item[\textcolor{green}{C}]  Value numbering
+\end{itemize}
+
+
+

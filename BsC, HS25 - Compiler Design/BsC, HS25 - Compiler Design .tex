@@ -1,0 +1,163 @@
+ \documentclass[10pt,landscape, margin = 0.1mm]{article}
+\usepackage{amssymb,amsmath,amsthm,amsfonts}
+\usepackage{multicol,multirow}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{calc}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{ifthen}
+\usepackage{titlesec}
+\usepackage[landscape]{geometry}
+\usepackage{enumitem}
+\usepackage{syntonly}
+\usepackage[most]{tcolorbox}
+\setitemize{noitemsep,topsep=0pt,parsep=0pt,partopsep=0pt}
+\usepackage[colorlinks=true,citecolor=blue,linkcolor=blue]{hyperref}
+\usepackage{tikz}
+\usepackage{stmaryrd}
+\usepackage{listings}
+\usepackage{booktabs}
+\usepackage{xcolor}
+\usepackage{bussproofs}
+\def\proofSkipAmount{\vskip -10pt}
+\usepackage{stmaryrd}
+
+
+\def\cm{\tikz\fill[scale=0.4](0,.35) -- (.25,0) -- (1,.7) -- (.25,.15) -- cycle;} 
+\ifthenelse{\lengthtest { \paperwidth = 11in}}
+    { \geometry{top=.1in,left=.1in,right=.1in,bottom=.1in} }
+	{\ifthenelse{ \lengthtest{ \paperwidth = 297mm}}
+		{\geometry{top=1mm,left=1mm,right=1mm,bottom=1mm} }
+		{\geometry{top=1mm,left=1mm,right=1mm,bottom=1mm} }
+	}
+
+\pagestyle{empty}
+
+\makeatletter
+
+ 
+
+\newcommand{\nextcol}{\vfill\null\columnbreak}
+
+
+\titleformat{\subsection}
+  {\normalfont\fontsize{10}{10}\bfseries}{\thesection}{1em}{}
+
+\newcommand*{\mysection}[2][black]{\vskip 0pt \vspace{2pt}\section{#2}\vspace{2pt} \colorlet{chaptercolor}{#1}}
+
+
+\newcommand*{\mysubsection}[1]{\vspace{-3mm}
+
+\color{chaptercolor}\subsection{ #1 }
+\vspace{0.4mm}\color{black}
+\vspace{-2mm}}
+
+\tcbset {
+  base/.style={
+    arc=0mm, 
+    bottomtitle=0.5mm,
+    boxrule=0mm,
+    colbacktitle=black!10!white, 
+    coltitle=black, 
+    fonttitle=\bfseries, 
+    left=2.5mm,
+    leftrule=1mm,
+    right=3.5mm,
+    title={#1},
+    toptitle=0.75mm, 
+  }
+}
+
+\newtcolorbox{mainbox}[2]{
+  breakable,
+  colframe={#2}, 
+  base={#1} 
+}
+
+\definecolor{cadet}{rgb}{0.37, 0.62, 0.63}
+\definecolor{MutedCoral}{rgb}{0.87, 0.49, 0.42}  
+\definecolor{SoftMustard}{rgb}{0.85, 0.76, 0.42} 
+\definecolor{PaleSage}{rgb}{0.68, 0.81, 0.68}   
+\definecolor{DustyLavender}{rgb}{0.69, 0.60, 0.85} 
+\definecolor{col1}{rgb}{0.0, 0.0, 1.0}    % Blue
+\definecolor{col2}{rgb}{0.0, 0.5, 0.75}   % Light Blue
+\definecolor{col3}{rgb}{0.0, 0.75, 0.5}   % Light Greenish Blue
+\definecolor{col4}{rgb}{0.0, 1.0, 0.25}   % Light Green
+\definecolor{col5}{rgb}{0.0, 1.0, 0.0}    % Green
+
+\newcommand{\BDEF}[2]{\begin{mainbox}{#1}{cadet} 
+    #2
+\end{mainbox}}
+
+\newcommand{\BCODE}[2]{\begin{mainbox}{#1}{PaleSage} 
+    #2
+\end{mainbox}}
+
+\newcommand{\BEX}[2]{\begin{mainbox}{#1}{DustyLavender} 
+    #2
+\end{mainbox}}
+
+
+\newcommand{\BRE}[2]{\begin{mainbox}{#1}{SoftMustard} 
+    #2
+\end{mainbox}}
+
+\newcommand{\COM}[1]{}
+\definecolor{matplotlibgreen}{rgb}{0.0, 0.3804, 0.0}
+\definecolor{matplotlibred}{rgb}{0.8588, 0.0, 0.0}
+
+\makeatother
+\setcounter{secnumdepth}{0}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt plus 0.5ex}
+\setlength{\marginparwidth}{0pt}
+\setlength{\marginparsep}{0pt}
+
+\lstset{
+  language=OCaml,
+  basicstyle=\ttfamily\scriptsize,
+  columns=fullflexible,
+  showstringspaces=false
+}
+
+\begin{document}
+
+\syntaxonlys
+
+\begin{center}
+     \Large{\textbf{Cheat Sheet}: Comp Sc BSc, CompDes - Surname Name, DD.MM.YYYY - \textbf{XX-YYY-ZZZ}} \\
+\end{center}
+\begin{multicols}{3}
+\setlength{\premulticols}{0.5pt}
+\setlength{\postmulticols}{0.5pt}
+\setlength{\multicolsep}{0.5pt}
+\setlength{\columnsep}{0.2pt}
+\setlength{\columnseprule}{0pt}
+
+
+
+\begin{flushleft}
+
+\input{Sections/OCAML}
+\input{Sections/x86 and LLVM}
+\input{Sections/Lexing and Parsing}
+\input{Sections/Typechecking}
+\input{Sections/Optimisation and Register Allocation}
+\input{Sections/Control Flow and GC}
+\input{Sections/MC}
+
+
+
+\end{flushleft}
+\end{multicols}
+
+\newpage
+
+
+
+
+
+\end{document}
+
